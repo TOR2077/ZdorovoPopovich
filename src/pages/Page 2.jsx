@@ -1,5 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
-export default function About() {
-  return <h1>Работает — О приложении</h1>
+function Page2() {
+  useEffect(() => {
+    // Текст на главной кнопке
+    TelegramWebApp.MainButton.setText("Вернуться на первую страницу");
+    TelegramWebApp.MainButton.show();
+  }, []);
+
+  return (
+    <div>
+      <h1>Работает</h1>
+      <p>Это вторая страница.</p>
+    </div>
+  );
 }
+
+export default Page2;

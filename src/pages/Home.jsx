@@ -1,5 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react';
 
-export default function Home() {
-  return <h1>Работает — Главная</h1>
+function Home() {
+  useEffect(() => {
+    // Текст на главной кнопке
+    TelegramWebApp.MainButton.setText("Перейти ко второй странице");
+    TelegramWebApp.MainButton.show();
+  }, []);
+
+  return (
+    <div>
+      <h1>Работает</h1>
+      <p>Это первая страница.</p>
+    </div>
+  );
 }
+
+export default Home;
