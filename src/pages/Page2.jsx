@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 function Page2() {
   useEffect(() => {
     // Текст на главной кнопке
-    TelegramWebApp.MainButton.setText("Вернуться на первую страницу");
-    TelegramWebApp.MainButton.show();
+    window.Telegram.WebApp.MainButton.setText("Вернуться на первую страницу");
+    window.Telegram.WebApp.MainButton.show();
   }, []);
 
   return (
