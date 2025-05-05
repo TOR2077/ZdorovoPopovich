@@ -50,7 +50,6 @@ export default function WeekCalendar({ value, onChange }) {
         </div>
       ))}
       <button className="calendar-nav-btn" onClick={() => setWeekOffset(weekOffset + 1)}>&gt;</button>
-      <div className="calendar-title">календарь<br/>(на неделю)</div>
     </div>
   );
 } 
