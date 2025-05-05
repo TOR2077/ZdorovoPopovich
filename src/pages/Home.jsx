@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
+const weekDays = [
+  { short: 'пн', num: 19 },
+  { short: 'вт', num: 20 },
+  { short: 'ср', num: 21 },
+  { short: 'чт', num: 22 },
+  { short: 'пт', num: 23 },
+  { short: 'сб', num: 24 },
+  { short: 'вс', num: 25 },
+];
+
 function Home() {
+  const [selectedDay, setSelectedDay] = useState(2); // по умолчанию среда
+  const navigate = useNavigate();
+
   return (
     <div className="home-container">
       <header className="home-header">
@@ -12,11 +26,17 @@ function Home() {
         </div>
       </header>
 
-      <div className="calendar-block">
-        <div className="calendar-day">
-          <div className="calendar-weekday">вс</div>
-          <div className="calendar-date">21</div>
-        </div>
+      <div className="calendar-block calendar-scroll">
+        {weekDays.map((day, idx) => (
+          <div
+            key={day.short}
+            className={`calendar-day-selectable${selectedDay === idx ? ' selected' : ''}`}
+            onClick={() => setSelectedDay(idx)}
+          >
+            <div className="calendar-weekday">{day.short}</div>
+            <div className="calendar-date">{day.num}</div>
+          </div>
+        ))}
         <div className="calendar-title">календарь<br/>(на неделю)</div>
       </div>
 
@@ -44,9 +64,8 @@ function Home() {
       </div>
 
       <footer className="home-footer">
-        <span className="footer-icon" />
-        <span className="footer-icon" />
-        <span className="footer-icon" />
+        <button className="footer-icon" onClick={() => navigate('/')}>🏠</button>
+        <button className="footer-icon" onClick={() => navigate('/page2')}>📄</button>
       </footer>
     </div>
   );
