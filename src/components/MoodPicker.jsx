@@ -7,18 +7,22 @@ const moods = [
   { label: 'Плохое', color: '#f44336', emoji: '😞' },
 ];
 
+const defaultMood = { label: 'Выбрать', color: '#bdbdbd', emoji: '❔' };
+
 export default function MoodPicker({ value, onChange }) {
   const [showPicker, setShowPicker] = useState(false);
+  const hasValue = value !== undefined && value !== null && value >= 0 && value < moods.length;
+  const mood = hasValue ? moods[value] : defaultMood;
 
   return (
     <div className="mood-picker-wrapper">
       <div
         className="stat-circle mood-emoji"
-        style={{ background: moods[value].color, fontSize: 28, cursor: 'pointer' }}
+        style={{ background: mood.color, fontSize: 28, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
         onClick={() => setShowPicker((v) => !v)}
-        title={moods[value].label}
+        title={mood.label}
       >
-        {moods[value].emoji}
+        {mood.emoji}
       </div>
       {showPicker && (
         <div className="mood-picker-vertical">
@@ -26,7 +30,7 @@ export default function MoodPicker({ value, onChange }) {
             <div
               key={m.label}
               className="mood-option"
-              style={{ background: m.color, color: '#fff', fontSize: 28, border: value === idx ? '2px solid #333' : 'none' }}
+              style={{ background: m.color, color: '#fff', fontSize: 28, border: value === idx ? '2px solid #333' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
               onClick={() => { onChange(idx); setShowPicker(false); }}
               title={m.label}
             >
