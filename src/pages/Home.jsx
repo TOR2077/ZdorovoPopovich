@@ -36,7 +36,7 @@ function isSameDay(d1, d2) {
 function Home() {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
-  const [mood, setMood] = useState(0); // 0 - хорошее, 1 - нейтральное, 2 - плохое
+  const [mood, setMood] = useState(null); // null - не выбрано
   const navigate = useNavigate();
 
   return (
