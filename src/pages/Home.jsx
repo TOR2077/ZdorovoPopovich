@@ -64,15 +64,15 @@ function Home() {
       <div className="stats-block">
         <div className="stat-item">
           <StepCounter value={steps} onChange={setSteps} />
-          <div className="stat-label">кол-во<br/>шагов</div>
+          <div className="stat-label">Кол-во<br/>шагов</div>
         </div>
         <div className="stat-item mood-item">
           <MoodPicker value={mood} onChange={setMood} />
-          <div className="stat-label">настроение<br/>(моська)</div>
+          <div className="stat-label">Настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
           <div className="stat-circle" />
-          <div className="stat-label">кол-во<br/>воды</div>
+          <div className="stat-label">Кол-во<br/>воды</div>
         </div>
       </div>
 
