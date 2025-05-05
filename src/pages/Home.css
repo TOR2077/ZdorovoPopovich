@@ -113,9 +113,10 @@ html, body, #root {
   border-radius: 28px;
   padding: 18px 18px 10px 18px;
   margin-bottom: 28px;
-  width: 90%;
+  width: 100%;
   max-width: 340px;
   gap: 18px;
+  box-sizing: border-box;
 }
 .stat-item {
   display: flex;
