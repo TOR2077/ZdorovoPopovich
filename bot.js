@@ -16,7 +16,7 @@ bot.onText(/\/start/, (msg) => {
         [
           {
             text: "Открыть приложение",
-            web_app: { url: "https://your-app-url.com" } // Замените на URL вашего приложения
+            web_app: { url: "https://https://zdorovo-popovich.vercel.app/" } // Замените на URL, полученный от Vercel
           }
         ]
       ],
