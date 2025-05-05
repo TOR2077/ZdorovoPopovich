@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WeekCalendar from '../components/WeekCalendar';
+import MoodPicker from '../components/MoodPicker';
 import './Home.css';
 
 const weekDayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
@@ -35,6 +36,7 @@ function isSameDay(d1, d2) {
 function Home() {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
+  const [mood, setMood] = useState(0); // 0 - хорошее, 1 - нейтральное, 2 - плохое
   const navigate = useNavigate();
 
   return (
@@ -62,8 +64,8 @@ function Home() {
           <div className="stat-circle" />
           <div className="stat-label">кол-во<br/>шагов</div>
         </div>
-        <div className="stat-item">
-          <div className="stat-circle" />
+        <div className="stat-item mood-item">
+          <MoodPicker value={mood} onChange={setMood} />
           <div className="stat-label">настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
