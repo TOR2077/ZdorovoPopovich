@@ -145,4 +145,57 @@
 }
 .footer-icon:active {
   background: #b0b0b0;
+}
+
+@media (max-width: 500px) {
+  .home-container {
+    padding: 0 2vw;
+    font-size: 15px;
+  }
+  .calendar-block {
+    min-width: unset;
+    padding: 6px 2vw;
+    gap: 4px;
+  }
+  .main-image-block {
+    width: 98%;
+    min-height: 60px;
+    font-size: 1rem;
+    margin: 12px 0;
+  }
+  .notes-block {
+    padding: 8px 2vw;
+    font-size: 0.97rem;
+  }
+  .stats-block {
+    width: 98%;
+    padding: 12px 2vw 6px 2vw;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .stat-circle {
+    width: 36px;
+    height: 36px;
+  }
+  .home-header {
+    margin-top: 10px;
+    margin-bottom: 6px;
+  }
+  .footer-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+  .home-footer {
+    padding: 6px 0 12px 0;
+  }
+}
+
+@media (max-width: 350px) {
+  .calendar-title, .stat-label {
+    font-size: 0.8rem;
+  }
+  .main-image-block {
+    font-size: 0.85rem;
+  }
 } 
