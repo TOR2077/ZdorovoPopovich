@@ -1,19 +1,40 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import WeekCalendar from '../components/WeekCalendar';
 import './Home.css';
 
-const weekDays = [
-  { short: 'пн', num: 19 },
-  { short: 'вт', num: 20 },
-  { short: 'ср', num: 21 },
-  { short: 'чт', num: 22 },
-  { short: 'пт', num: 23 },
-  { short: 'сб', num: 24 },
-  { short: 'вс', num: 25 },
-];
+const weekDayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+
+function getStartOfWeek(date) {
+  // Получить понедельник текущей недели
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = (day === 0 ? -6 : 1) - day; // если воскресенье, то -6, иначе 1-day
+  d.setDate(d.getDate() + diff);
+  d.setHours(0,0,0,0);
+  return d;
+}
+
+function getWeekDates(startDate) {
+  // Получить массив дат недели, начиная с startDate (понедельник)
+  const week = [];
+  for (let i = 0; i < 7; i++) {
+    const d = new Date(startDate);
+    d.setDate(startDate.getDate() + i);
+    week.push(d);
+  }
+  return week;
+}
+
+function isSameDay(d1, d2) {
+  return d1.getFullYear() === d2.getFullYear() &&
+    d1.getMonth() === d2.getMonth() &&
+    d1.getDate() === d2.getDate();
+}
 
 function Home() {
-  const [selectedDay, setSelectedDay] = useState(2); // по умолчанию среда
+  const today = new Date();
+  const [selectedDate, setSelectedDate] = useState(today);
   const navigate = useNavigate();
 
   return (
@@ -26,19 +47,7 @@ function Home() {
         </div>
       </header>
 
-      <div className="calendar-block calendar-scroll">
-        {weekDays.map((day, idx) => (
-          <div
-            key={day.short}
-            className={`calendar-day-selectable${selectedDay === idx ? ' selected' : ''}`}
-            onClick={() => setSelectedDay(idx)}
-          >
-            <div className="calendar-weekday">{day.short}</div>
-            <div className="calendar-date">{day.num}</div>
-          </div>
-        ))}
-        <div className="calendar-title">календарь<br/>(на неделю)</div>
-      </div>
+      <WeekCalendar value={selectedDate} onChange={setSelectedDate} />
 
       <div className="main-image-block">
         в этом пространстве<br/>какая-то картинка /<br/>стикер/анимация
