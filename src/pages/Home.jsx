@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WeekCalendar from '../components/WeekCalendar';
 import MoodPicker from '../components/MoodPicker';
+import StepCounter from '../components/StepCounter';
 import './Home.css';
 
 const weekDayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
@@ -37,6 +38,7 @@ function Home() {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
   const [mood, setMood] = useState(null); // null - не выбрано
+  const [steps, setSteps] = useState(0);
   const navigate = useNavigate();
 
   return (
@@ -61,7 +63,7 @@ function Home() {
 
       <div className="stats-block">
         <div className="stat-item">
-          <div className="stat-circle" />
+          <StepCounter value={steps} onChange={setSteps} />
           <div className="stat-label">кол-во<br/>шагов</div>
         </div>
         <div className="stat-item mood-item">
