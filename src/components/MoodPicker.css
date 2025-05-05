@@ -7,6 +7,16 @@
 
 .mood-emoji {
   transition: box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1;
+  width: 44px;
+  height: 44px;
+  font-size: 28px;
+  padding: 0;
 }
 .mood-emoji:active {
   box-shadow: 0 0 0 2px #888;
@@ -37,6 +47,11 @@
   cursor: pointer;
   border: none;
   transition: border 0.2s, box-shadow 0.2s;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 1;
+  font-size: 28px;
+  padding: 0;
 }
 .mood-option:active {
   box-shadow: 0 0 0 2px #888;
