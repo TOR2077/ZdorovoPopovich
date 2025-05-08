@@ -4,6 +4,7 @@ import WeekCalendar from '../components/WeekCalendar';
 import MoodPicker from '../components/MoodPicker';
 import StepCounter from '../components/StepCounter';
 import MonthCalendar from '../components/MonthCalendar';
+import Notes from '../components/Notes';
 import './Home.css';
 
 const weekDayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
@@ -64,9 +65,7 @@ function Home() {
         в этом пространстве<br/>какая-то картинка /<br/>стикер/анимация
       </div>
 
-      <div className="notes-block">
-        плашка на<br/>заметки на сегодня
-      </div>
+      <Notes date={selectedDate} />
 
       <div className="stats-block">
         <div className="stat-item">
