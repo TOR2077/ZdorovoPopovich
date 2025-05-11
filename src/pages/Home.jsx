@@ -46,23 +46,24 @@ function Home() {
   const [showDashboard, setShowDashboard] = useState(false);
   const navigate = useNavigate();
 
-  // Получаем имя пользователя для приветствия
-  let userName = '';
+  // Получаем данные пользователя
+  let user = {};
   try {
-    const user = JSON.parse(localStorage.getItem('userProfile'));
-    userName = user?.name || '';
+    user = JSON.parse(localStorage.getItem('userProfile')) || {};
   } catch {}
 
   return (
     <div className="home-container">
       <header className="home-header">
-        <span className="greeting">Привет{userName ? `, ${userName}` : ''}!</span>
+        <div className="header-left">
+          <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
+            <img src={avatar} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
+          </button>
+        </div>
+        <span className="greeting">Привет{user.name ? `, ${user.name}` : ''}!</span>
         <div className="header-icons calendar-only">
           <button className="header-icon calendar-btn" onClick={() => setShowMonthCalendar(true)} title="Открыть календарь">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="4"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          </button>
-          <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
-            <img src={avatar} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
           </button>
         </div>
       </header>
@@ -87,8 +88,17 @@ function Home() {
 
       <WeekCalendar value={selectedDate} onChange={setSelectedDate} />
 
-      <div className="main-image-block">
-        в этом пространстве<br/>какая-то картинка /<br/>стикер/анимация
+      <div className="main-image-block user-data-block">
+        {user.name || user.gender || user.height || user.weight ? (
+          <div className="user-data-center">
+            <div><b>Имя:</b> {user.name || '-'}</div>
+            <div><b>Пол:</b> {user.gender || '-'}</div>
+            <div><b>Рост:</b> {user.height ? user.height + ' см' : '-'}</div>
+            <div><b>Вес:</b> {user.weight ? user.weight + ' кг' : '-'}</div>
+          </div>
+        ) : (
+          <>в этом пространстве<br/>какая-то картинка /<br/>стикер/анимация</>
+        )}
       </div>
 
       <Notes date={selectedDate} />
