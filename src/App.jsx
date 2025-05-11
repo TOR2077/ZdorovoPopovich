@@ -1,14 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Page2 from './pages/Page2';
+import Registration from './pages/Registration';
 
 function App() {
+  const [registered, setRegistered] = useState(!!localStorage.getItem('userProfile'));
+
+  const handleRegister = () => {
+    setRegistered(true);
+  };
+
   useEffect(() => {
     // Инициализация Telegram Web App
     window.Telegram.WebApp.ready();
   }, []);
+
+  if (!registered) {
+    return <Registration onRegister={handleRegister} />;
+  }
 
   return (
     <Router>

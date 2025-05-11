@@ -6,6 +6,7 @@ import StepCounter from '../components/StepCounter';
 import MonthCalendar from '../components/MonthCalendar';
 import Notes from '../components/Notes';
 import './Home.css';
+import avatar from '../assets/avatar.png';
 
 const weekDayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
@@ -42,18 +43,43 @@ function Home() {
   const [mood, setMood] = useState(null); // null - не выбрано
   const [steps, setSteps] = useState(0);
   const [showMonthCalendar, setShowMonthCalendar] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
   const navigate = useNavigate();
+
+  // Получаем имя пользователя для приветствия
+  let userName = '';
+  try {
+    const user = JSON.parse(localStorage.getItem('userProfile'));
+    userName = user?.name || '';
+  } catch {}
 
   return (
     <div className="home-container">
       <header className="home-header">
-        <span className="greeting">Привет!</span>
+        <span className="greeting">Привет{userName ? `, ${userName}` : ''}!</span>
         <div className="header-icons calendar-only">
           <button className="header-icon calendar-btn" onClick={() => setShowMonthCalendar(true)} title="Открыть календарь">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="4"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </button>
+          <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
+            <img src={avatar} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
+          </button>
         </div>
       </header>
+
+      {showDashboard && (
+        <div className="profile-dashboard">
+          <div className="profile-dashboard-avatar">
+            <img src={avatar} alt="avatar" style={{width: 54, height: 54, borderRadius: '50%', margin: '0 auto 8px auto', display: 'block'}} />
+          </div>
+          <div className="profile-dashboard-menu">
+            <div className="profile-dashboard-item profile-dashboard-profile">Профиль</div>
+            <div className="profile-dashboard-divider"></div>
+            <div className="profile-dashboard-item">Настройки</div>
+            <div className="profile-dashboard-item">Конфиденциальность</div>
+          </div>
+        </div>
+      )}
 
       {showMonthCalendar && (
         <MonthCalendar onClose={() => setShowMonthCalendar(false)} />
