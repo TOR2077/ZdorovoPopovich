@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Notes.css';
 
 export default function Notes({ date }) {
   const [notes, setNotes] = useState('');
   const [isEditing, setIsEditing] = useState(false);
+  const editorRef = useRef(null);
 
   // Загрузка заметок из localStorage при монтировании компонента
   useEffect(() => {
@@ -14,6 +15,18 @@ export default function Notes({ date }) {
       setNotes('');
     }
   }, [date]);
+
+  // Закрытие редактора по клику вне
+  useEffect(() => {
+    if (!isEditing) return;
+    function handleClickOutside(e) {
+      if (editorRef.current && !editorRef.current.contains(e.target)) {
+        setIsEditing(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isEditing]);
 
   const handleNotesChange = (e) => {
     setNotes(e.target.value);
@@ -33,7 +46,7 @@ export default function Notes({ date }) {
   return (
     <div className="notes-block">
       {isEditing ? (
-        <div className="notes-editor">
+        <div className="notes-editor" ref={editorRef}>
           <textarea
             value={notes}
             onChange={handleNotesChange}

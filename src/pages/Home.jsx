@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import WeekCalendar from '../components/WeekCalendar';
 import MoodPicker from '../components/MoodPicker';
@@ -45,12 +45,25 @@ function Home() {
   const [showMonthCalendar, setShowMonthCalendar] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
   const navigate = useNavigate();
+  const dashboardRef = useRef(null);
 
   // Получаем данные пользователя
   let user = {};
   try {
     user = JSON.parse(localStorage.getItem('userProfile')) || {};
   } catch {}
+
+  // Закрытие дропдауна по клику вне
+  useEffect(() => {
+    if (!showDashboard) return;
+    function handleClickOutside(e) {
+      if (dashboardRef.current && !dashboardRef.current.contains(e.target)) {
+        setShowDashboard(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showDashboard]);
 
   return (
     <div className="home-container">
@@ -69,7 +82,7 @@ function Home() {
       </header>
 
       {showDashboard && (
-        <div className="profile-dashboard">
+        <div className="profile-dashboard" ref={dashboardRef}>
           <div className="profile-dashboard-avatar">
             <img src={avatar} alt="avatar" style={{width: 54, height: 54, borderRadius: '50%', margin: '0 auto 8px auto', display: 'block'}} />
           </div>

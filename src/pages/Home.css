@@ -205,9 +205,10 @@ html, body, #root {
   background: #fff;
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.13);
-  min-width: 180px;
-  max-width: 90vw;
-  padding: 18px 0 8px 0;
+  min-width: 140px;
+  max-width: 70vw;
+  width: 160px;
+  padding: 14px 0 6px 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
