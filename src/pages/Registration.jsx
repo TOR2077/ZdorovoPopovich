@@ -21,9 +21,6 @@ export default function Registration({ onRegister }) {
     <div className="reg-bg">
       <form className="reg-form" onSubmit={handleSubmit}>
         <button type="button" className="reg-btn" disabled>РЕГИСТРАЦИЯ</button>
-        <div className="reg-avatar">
-          <img src="/avatar.png" alt="avatar" />
-        </div>
         <div className="reg-fields">
           <label>ИМЯ
             <input type="text" value={name} onChange={e => setName(e.target.value)} placeholder="..." />
