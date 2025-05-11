@@ -79,11 +79,13 @@
 
 .reg-fields label {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 2px;
+  min-height: 38px;
 }
 
 .reg-fields input, .reg-fields select {
@@ -92,15 +94,16 @@
   background: transparent;
   font-size: 1.1rem;
   color: #23243a;
-  width: 60%;
+  width: 100px;
   text-align: center;
   outline: none;
   padding: 2px 0 2px 0;
   margin-left: 10px;
+  box-sizing: border-box;
 }
 
 .reg-fields select {
-  width: 65%;
+  width: 110px;
 }
 
 .reg-continue {

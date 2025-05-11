@@ -19,9 +19,8 @@ export default function Registration({ onRegister }) {
 
   return (
     <div className="reg-bg">
-      <div className="reg-title">ПРОФИЛЬ пользователя</div>
       <form className="reg-form" onSubmit={handleSubmit}>
-        <button type="button" className="reg-btn" disabled>РЕГЕСТРАЦИЯ</button>
+        <button type="button" className="reg-btn" disabled>РЕГИСТРАЦИЯ</button>
         <div className="reg-avatar">
           <img src="/avatar.png" alt="avatar" />
         </div>
