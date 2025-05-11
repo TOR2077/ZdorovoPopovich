@@ -89,16 +89,7 @@ function Home() {
       <WeekCalendar value={selectedDate} onChange={setSelectedDate} />
 
       <div className="main-image-block user-data-block">
-        {user.name || user.gender || user.height || user.weight ? (
-          <div className="user-data-center">
-            <div><b>Имя:</b> {user.name || '-'}</div>
-            <div><b>Пол:</b> {user.gender || '-'}</div>
-            <div><b>Рост:</b> {user.height ? user.height + ' см' : '-'}</div>
-            <div><b>Вес:</b> {user.weight ? user.weight + ' кг' : '-'}</div>
-          </div>
-        ) : (
-          <>в этом пространстве<br/>какая-то картинка /<br/>стикер/анимация</>
-        )}
+        <>в этом пространстве<br/>какая-то картинка /<br/>стикер/анимация</>
       </div>
 
       <Notes date={selectedDate} />
