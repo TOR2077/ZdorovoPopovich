@@ -47,7 +47,7 @@ export default function MonthCalendar({ onClose }) {
   });
 
   return (
-    <div className="month-modal-bg">
+    <div className="month-modal-bg" onClick={e => { if (e.target === e.currentTarget) onClose(); }}>
       <div className="month-modal">
         <div className="month-header">
           <button className="month-nav" onClick={() => setViewMonth(m => m === 0 ? 11 : m - 1) || (m === 0 && setViewYear(y => y - 1))}>&lt;</button>
