@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Registration.css';
 
-const genders = ['Мужской', 'Женский', 'Другое'];
+const genders = ['Мужской', 'Женский'];
 
 export default function Registration({ onRegister }) {
   const [name, setName] = useState('');
