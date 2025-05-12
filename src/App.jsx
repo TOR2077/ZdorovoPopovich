@@ -12,7 +12,7 @@ function AnimatedRoutes({ direction, setDirection }) {
     <SwitchTransition mode="out-in">
       <CSSTransition
         key={location.pathname}
-        classNames={direction === 'left' ? 'slide-left' : 'slide-right'}
+        classNames={`slide-${direction}`}
         timeout={400}
         onExited={() => setDirection('left')}
       >
