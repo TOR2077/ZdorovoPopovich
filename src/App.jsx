@@ -29,8 +29,8 @@ function AnimatedRoutes({ direction, setDirection }) {
       >
         <div style={{ position: 'relative' }}>
           <Routes location={location}>
-            <Route path="/" element={<Home navigate={(to) => { setDirection('right'); navigate(to); }} />} />
-            <Route path="/page2" element={<Page2 navigate={(to) => { setDirection('left'); navigate(to); }} />} />
+            <Route path="/" element={<Home navigate={navigate} />} />
+            <Route path="/page2" element={<Page2 navigate={navigate} />} />
           </Routes>
         </div>
       </CSSTransition>
