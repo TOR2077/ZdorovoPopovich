@@ -10,12 +10,12 @@
 
 .month-modal {
   background: #ede7fa;
-  border-radius: 32px;
+  border-radius: 18px;
   box-shadow: none;
-  padding: 32px 24px 24px 24px;
-  min-width: 340px;
+  padding: 18px 10px 14px 10px;
+  min-width: 240px;
   max-width: 95vw;
-  min-height: 340px;
+  min-height: 240px;
   position: relative;
 }
 
