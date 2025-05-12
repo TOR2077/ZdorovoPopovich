@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAnimation } from '../context/AnimationContext';
+// import { useAnimation } from '../context/AnimationContext';
 import WeekCalendar from '../components/WeekCalendar';
 import MoodPicker from '../components/MoodPicker';
 import StepCounter from '../components/StepCounter';
@@ -50,7 +50,7 @@ function Home({ setDirection }) {
   const [water, setWater] = useState(() => 0);
   const dashboardRef = useRef(null);
   const navigate = useNavigate();
-  const { navigateWithAnimation } = useAnimation();
+  // const { navigateWithAnimation } = useAnimation();
 
   // Получаем данные пользователя
   let user = {};
