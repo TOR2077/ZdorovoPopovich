@@ -15,7 +15,7 @@ function AnimatedRoutes() {
     <SwitchTransition mode="out-in">
       <CSSTransition
         key={location.pathname}
-        classNames={direction}
+        classNames={`slide-${direction}`}
         timeout={400}
       >
         <div style={{ position: 'relative' }}>

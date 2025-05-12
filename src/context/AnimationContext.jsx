@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState } from 'react';
 const AnimationContext = createContext();
 
 export function AnimationProvider({ children }) {
-  const [direction, setDirection] = useState('slide-left');
+  const [direction, setDirection] = useState('left');
 
   const navigateWithAnimation = (navigate, path, newDirection) => {
     setDirection(newDirection);

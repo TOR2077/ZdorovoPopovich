@@ -129,14 +129,14 @@ export default function Page2({ setDirection }) {
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/') {
-            navigateWithAnimation(navigate, '/', 'slide-right');
+            navigateWithAnimation(navigate, '/', 'right');
           }
         }}>
           <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
         </button>
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/page2') {
-            navigateWithAnimation(navigate, '/page2', 'slide-left');
+            navigateWithAnimation(navigate, '/page2', 'left');
           }
         }}>
           <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
