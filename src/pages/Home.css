@@ -362,6 +362,9 @@ html, body, #root {
   .profile-dashboard-divider {
     margin: 0 8px 0 8px;
   }
+  .main-image-block img {
+    max-height: 300px !important;
+  }
 }
 
 @media (max-width: 350px) {
