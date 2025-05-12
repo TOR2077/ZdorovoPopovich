@@ -103,7 +103,15 @@ export default function Page2({ setDirection }) {
       )}
 
       {/* Основной блок отчётов */}
-      <div className="main-image-block user-data-block" style={{marginTop: 18}}>
+      <div style={{
+        marginTop: 18,
+        border: '1.5px solid #e0e0e0',
+        borderRadius: 16,
+        background: '#fff',
+        boxShadow: '0 2px 12px rgba(164,154,214,0.08)',
+        padding: '18px 12px',
+        marginBottom: 18
+      }}>
         <div style={{width: '100%'}}>
           <div style={{fontWeight: 'bold', fontSize: '1.15rem', color: '#23243a', marginBottom: 12}}>Твои отчёты</div>
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', marginBottom: 18, gap: 18}}>
@@ -116,7 +124,19 @@ export default function Page2({ setDirection }) {
               <div style={{fontSize: '1rem', color: '#888'}}>литр</div>
             </div>
           </div>
-          <div style={{margin: '18px 0 18px 0', padding: '0 6px'}}>
+        </div>
+      </div>
+
+      {/* Блок сна и калорий */}
+      <div style={{
+        border: '1.5px solid #e0e0e0',
+        borderRadius: 16,
+        background: '#fff',
+        boxShadow: '0 2px 12px rgba(164,154,214,0.08)',
+        padding: '18px 12px'
+      }}>
+        <div style={{width: '100%'}}>
+          <div style={{margin: '0 0 18px 0', padding: '0 6px'}}>
             <div style={{fontSize: '1rem', color: '#a49ad6', marginBottom: 4}}>количество сна</div>
             <div
               style={{width: '100%', height: 8, background: '#e5dbe7', borderRadius: 6, marginBottom: 6, position: 'relative', cursor: 'pointer'}}
