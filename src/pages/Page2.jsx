@@ -10,11 +10,11 @@ import CaloriesCalculator from '../components/CaloriesCalculator';
 export default function Page2({ setDirection }) {
   const [showDashboard, setShowDashboard] = useState(false);
   const [water, setWater] = useState(() => {
-    const saved = localStorage.getItem('waterAmount');
+    const saved = sessionStorage.getItem('waterAmount');
     return saved !== null ? Number(saved) : 0;
   });
   const [sleepMinutes, setSleepMinutes] = useState(() => {
-    const saved = localStorage.getItem('sleepMinutes');
+    const saved = sessionStorage.getItem('sleepMinutes');
     return saved !== null ? Number(saved) : 0; // 0 минут по умолчанию
   });
   const [showSleepModal, setShowSleepModal] = useState(false);
@@ -67,12 +67,12 @@ export default function Page2({ setDirection }) {
   }, [showDashboard]);
 
   useEffect(() => {
-    localStorage.setItem('waterAmount', water);
+    sessionStorage.setItem('waterAmount', water);
   }, [water]);
 
-  // Сохраняем sleepMinutes в localStorage при изменении
+  // Сохраняем sleepMinutes в sessionStorage при изменении
   useEffect(() => {
-    localStorage.setItem('sleepMinutes', sleepMinutes);
+    sessionStorage.setItem('sleepMinutes', sleepMinutes);
   }, [sleepMinutes]);
 
   return (

@@ -59,7 +59,7 @@ function Home({ setDirection }) {
     user = JSON.parse(sessionStorage.getItem('userProfile')) || {};
   } catch {}
 
-  // Закрытие дропдауна по клику вне
+  // Закрытие дропдауна по клику 
   useEffect(() => {
     if (!showDashboard) return;
     function handleClickOutside(e) {
