@@ -92,6 +92,7 @@
   font-weight: bold;
   color: #23243a;
   transition: background 0.2s, color 0.2s, border 0.2s;
+  border: 2.5px solid transparent;
 }
 
 .month-days .today {
