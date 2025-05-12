@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import WeekCalendar from '../components/WeekCalendar';
 import MoodPicker from '../components/MoodPicker';
 import StepCounter from '../components/StepCounter';
@@ -38,7 +39,7 @@ function isSameDay(d1, d2) {
     d1.getDate() === d2.getDate();
 }
 
-function Home({ navigate, setDirection }) {
+function Home({ setDirection }) {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
   const [mood, setMood] = useState(null); // null - не выбрано
@@ -47,6 +48,7 @@ function Home({ navigate, setDirection }) {
   const [showDashboard, setShowDashboard] = useState(false);
   const [water, setWater] = useState(() => 0);
   const dashboardRef = useRef(null);
+  const navigate = useNavigate();
 
   // Получаем данные пользователя
   let user = {};
