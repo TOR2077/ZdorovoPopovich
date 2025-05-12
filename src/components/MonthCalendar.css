@@ -11,7 +11,7 @@
 .month-modal {
   background: #ede7fa;
   border-radius: 18px;
-  box-shadow: none;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
   padding: 18px 10px 14px 10px;
   min-width: 240px;
   max-width: 95vw;
@@ -23,10 +23,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  font-size: 2rem;
+  gap: 10px;
+  font-size: 1.1rem;
   font-weight: bold;
-  margin-bottom: 18px;
+  margin-bottom: 10px;
   color: #23243a;
 }
 
@@ -62,20 +62,19 @@
 .month-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  margin-bottom: 8px;
-  font-size: 1.1rem;
+  gap: 2px;
+  margin-bottom: 4px;
+  font-size: 1rem;
   color: #23243a;
   text-align: center;
   font-weight: bold;
-  letter-spacing: 0.02em;
 }
 
 .month-days {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  font-size: 1.2rem;
+  gap: 2px;
+  font-size: 1rem;
   text-align: center;
 }
 
@@ -84,12 +83,12 @@
 }
 
 .month-days span {
-  padding: 12px 0;
-  border-radius: 16px;
+  padding: 6px 0;
+  border-radius: 6px;
   background: #f6f1fd;
   margin: 0;
   display: block;
-  font-size: 1.15rem;
+  font-size: 1rem;
   font-weight: bold;
   color: #23243a;
   transition: background 0.2s, color 0.2s, border 0.2s;
