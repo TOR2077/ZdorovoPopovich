@@ -1,8 +1,8 @@
 .calendar-block {
   display: flex;
   align-items: center;
-  background: #e0e0e0;
-  border-radius: 14px;
+  background: #a49ad6;
+  border-radius: 18px;
   padding: 8px 0;
   margin-bottom: 18px;
   gap: 2px;
@@ -24,47 +24,50 @@
   margin-right: 0;
   padding: 6px 0;
   border-radius: 10px;
-  background: #f5f5f5;
+  background: #f7f3ff;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
   box-sizing: border-box;
 }
 .calendar-day-selectable.selected {
-  background: #b0b0b0;
+  background: #6a5acd;
   color: #fff;
 }
 .calendar-day-selectable.today {
-  border: 2px solid #4caf50;
+  border: 2.5px solid #c6e84e;
   box-sizing: border-box;
 }
 .calendar-weekday {
   font-size: 1rem;
   font-weight: 600;
+  color: #23243a;
 }
 .calendar-date {
   font-size: 0.9rem;
-  color: #888;
+  color: #6a5acd;
+  font-weight: bold;
 }
 .calendar-title {
   font-size: 1.1rem;
   font-weight: 500;
 }
 .calendar-nav-btn {
-  background: #e0e0e0;
+  background: #e5dbe7;
   border: none;
-  border-radius: 8px;
-  width: 24px;
-  height: 38px;
-  font-size: 1rem;
+  border-radius: 10px;
+  width: 32px;
+  height: 44px;
+  font-size: 1.2rem;
   margin: 0 2px;
   cursor: pointer;
   transition: background 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #6a5acd;
 }
 .calendar-nav-btn:active {
-  background: #b0b0b0;
+  background: #a49ad6;
 }
 
 @media (max-width: 500px) {
