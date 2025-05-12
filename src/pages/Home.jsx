@@ -67,8 +67,17 @@ function Home({ navigate }) {
   }, [showDashboard]);
 
   useEffect(() => {
-    const saved = localStorage.getItem('waterAmount');
-    setWater(saved !== null ? Number(saved) : 0);
+    function updateWater() {
+      const saved = localStorage.getItem('waterAmount');
+      setWater(saved !== null ? Number(saved) : 0);
+    }
+    updateWater();
+    window.addEventListener('focus', updateWater);
+    document.addEventListener('visibilitychange', updateWater);
+    return () => {
+      window.removeEventListener('focus', updateWater);
+      document.removeEventListener('visibilitychange', updateWater);
+    };
   }, []);
 
   return (
