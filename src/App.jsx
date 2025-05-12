@@ -6,7 +6,7 @@ import Page2 from './pages/Page2';
 import Registration from './pages/Registration';
 
 function App() {
-  const [showRegistration, setShowRegistration] = useState(true);
+  const [showRegistration, setShowRegistration] = useState(false);
 
   const handleRegister = () => {
     setShowRegistration(false);

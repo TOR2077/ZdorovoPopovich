@@ -91,6 +91,8 @@ function Home() {
             <div className="profile-dashboard-divider"></div>
             <div className="profile-dashboard-item">Настройки</div>
             <div className="profile-dashboard-item">Конфиденциальность</div>
+            <div className="profile-dashboard-divider"></div>
+            <div className="profile-dashboard-item logout-item" onClick={() => window.Telegram.WebApp.close()}>Выход</div>
           </div>
         </div>
       )}
