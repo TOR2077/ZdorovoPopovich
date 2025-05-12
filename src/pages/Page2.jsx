@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAnimation } from '../context/AnimationContext';
 import './Home.css';
 import avatar from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
@@ -16,6 +17,7 @@ export default function Page2({ setDirection }) {
   const navigate = useNavigate();
   const waterCircleRef = useRef(null);
   let startY = useRef(null);
+  const { navigateWithAnimation } = useAnimation();
 
   // Получаем данные пользователя
   let user = {};
@@ -127,16 +129,14 @@ export default function Page2({ setDirection }) {
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/') {
-            setDirection('slide-right'); 
-            navigate('/');
+            navigateWithAnimation(navigate, '/', 'slide-right');
           }
         }}>
           <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
         </button>
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/page2') {
-            setDirection('slide-left'); 
-            navigate('/page2');
+            navigateWithAnimation(navigate, '/page2', 'slide-left');
           }
         }}>
           <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />

@@ -1,23 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAnimation } from '../context/AnimationContext';
 import './Registration.css';
 
 const genders = ['Мужской', 'Женский'];
 
-export default function Registration({ setDirection }) {
+export default function Registration() {
   const [name, setName] = useState('');
   const [gender, setGender] = useState('');
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const navigate = useNavigate();
+  const { navigateWithAnimation } = useAnimation();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !gender || !height || !weight) return;
     const userData = { name, gender, height, weight };
     localStorage.setItem('userProfile', JSON.stringify(userData));
-    setDirection('slide-right');
-    navigate('/');
+    navigateWithAnimation(navigate, '/', 'slide-right');
   };
 
   return (

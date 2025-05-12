@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAnimation } from '../context/AnimationContext';
 import WeekCalendar from '../components/WeekCalendar';
 import MoodPicker from '../components/MoodPicker';
 import StepCounter from '../components/StepCounter';
@@ -49,6 +50,7 @@ function Home({ setDirection }) {
   const [water, setWater] = useState(() => 0);
   const dashboardRef = useRef(null);
   const navigate = useNavigate();
+  const { navigateWithAnimation } = useAnimation();
 
   // Получаем данные пользователя
   let user = {};
@@ -146,16 +148,14 @@ function Home({ setDirection }) {
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/') {
-            setDirection('slide-left'); 
-            navigate('/');
+            navigateWithAnimation(navigate, '/', 'slide-right');
           }
         }}>
           <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
         </button>
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/page2') {
-            setDirection('slide-left'); 
-            navigate('/page2');
+            navigateWithAnimation(navigate, '/page2', 'slide-left');
           }
         }}>
           <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
