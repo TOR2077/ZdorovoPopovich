@@ -64,7 +64,7 @@ export default function Page2({ navigate }) {
   }, [water]);
 
   return (
-    <div className="home-container fade-page">
+    <div className="home-container">
       <header className="home-header">
         <div className="header-left">
           <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">

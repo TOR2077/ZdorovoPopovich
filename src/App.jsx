@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import Home from './pages/Home';
@@ -30,6 +30,18 @@ function AnimatedRoutes({ direction, setDirection }) {
 function App() {
   const [showRegistration, setShowRegistration] = useState(false);
   const [direction, setDirection] = useState('left');
+  const prevPath = useRef('/');
+  const location = useLocation ? useLocation() : { pathname: '/' };
+
+  useEffect(() => {
+    // Определяем направление анимации по изменению пути
+    if (location.pathname === '/page2' && prevPath.current === '/') {
+      setDirection('left');
+    } else if (location.pathname === '/' && prevPath.current === '/page2') {
+      setDirection('right');
+    }
+    prevPath.current = location.pathname;
+  }, [location.pathname]);
 
   const handleRegister = () => {
     setShowRegistration(false);

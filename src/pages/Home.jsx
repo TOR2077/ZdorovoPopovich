@@ -66,6 +66,11 @@ function Home({ navigate }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [showDashboard]);
 
+  useEffect(() => {
+    const saved = localStorage.getItem('waterAmount');
+    setWater(saved !== null ? Number(saved) : 0);
+  }, []);
+
   return (
     <div className="home-container">
       <header className="home-header">
@@ -120,7 +125,7 @@ function Home({ navigate }) {
           <div className="stat-label">Настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
-          <div className="stat-circle" style={{border: '2.5px solid #4ee0e0'}}>
+          <div className="stat-circle">
             {water}
           </div>
           <div className="stat-label">Кол-во<br/>воды</div>
