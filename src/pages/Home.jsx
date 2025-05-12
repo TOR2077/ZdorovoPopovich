@@ -10,6 +10,7 @@ import './Home.css';
 import avatar from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
+import mainLogo from '../assets/Main logo.png';
 
 const weekDayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
@@ -123,7 +124,7 @@ function Home({ setDirection }) {
       <WeekCalendar value={selectedDate} onChange={setSelectedDate} />
 
       <div className="main-image-block user-data-block">
-        <>в этом пространстве<br/>какая-то картинка /<br/>стикер/анимация</>
+        <img src={mainLogo} alt="Медведь со звёздами" style={{maxWidth: '100%', maxHeight: 180, display: 'block', margin: '0 auto'}} />
       </div>
 
       <Notes date={selectedDate} />
