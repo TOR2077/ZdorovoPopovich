@@ -6,7 +6,7 @@ export default function SleepSlider({ initialMinutes = 0, onSave, onClose }) {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
 
-  // Обработчик клика по фону
+  // Обработчик клика по фон
   const handleBgClick = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
