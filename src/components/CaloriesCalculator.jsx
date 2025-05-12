@@ -5,9 +5,10 @@ export default function CaloriesCalculator() {
     <div style={{
       border: '1.5px solid #e0e0e0',
       borderRadius: 16,
-      background: '#fff',
+      background: '#fafafa',
       boxShadow: '0 2px 12px rgba(164,154,214,0.08)',
-      padding: '18px 12px'
+      padding: '18px 12px',
+      marginTop: 24
     }}>
       <div style={{width: '100%'}}>
         <div style={{margin: '0 0 0 0', padding: '0 6px'}}>

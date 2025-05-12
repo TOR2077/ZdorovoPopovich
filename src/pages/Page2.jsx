@@ -108,7 +108,7 @@ export default function Page2({ setDirection }) {
         marginTop: 18,
         border: '1.5px solid #e0e0e0',
         borderRadius: 16,
-        background: '#fff',
+        background: '#fafafa',
         boxShadow: '0 2px 12px rgba(164,154,214,0.08)',
         padding: '18px 12px',
         marginBottom: 18
