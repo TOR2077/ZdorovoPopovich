@@ -127,12 +127,11 @@ function Home() {
       </div>
 
       <footer className="home-footer">
-        <button className="footer-icon" onClick={() => navigate('/page2')}>
-          <img src={page2Icon} alt="Заметки" style={{width: 32, height: 32}} />
-        </button>
-        <button className="footer-icon"></button>
         <button className="footer-icon" onClick={() => navigate('/') }>
           <img src={homeIcon} alt="Домой" style={{width: 32, height: 32}} />
+        </button>
+        <button className="footer-icon" onClick={() => navigate('/page2')}>
+          <img src={page2Icon} alt="Заметки" style={{width: 32, height: 32}} />
         </button>
       </footer>
     </div>
