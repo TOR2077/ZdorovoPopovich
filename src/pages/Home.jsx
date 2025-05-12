@@ -127,7 +127,7 @@ function Home({ setDirection }) {
         <img src={mainLogo} alt="Медведь со звёздами" style={{maxWidth: '100%', maxHeight: 220, display: 'block', margin: '0 auto'}} />
       </div>
 
-      <Notes date={selectedDate} style={{marginBottom: 0}} />
+      <Notes date={selectedDate} style={{marginTop: 12, marginBottom: 12}} />
 
       <div className="stats-block" style={{marginTop: '12px'}}>
         <div className="stat-item">
