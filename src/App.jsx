@@ -6,7 +6,7 @@ import Page2 from './pages/Page2';
 import Registration from './pages/Registration';
 import './pageTransition.css';
 
-function AnimatedRoutes({ direction }) {
+function AnimatedRoutes({ direction, setDirection }) {
   const location = useLocation();
   return (
     <SwitchTransition mode="out-in">
@@ -17,8 +17,8 @@ function AnimatedRoutes({ direction }) {
       >
         <div style={{ position: 'relative' }}>
           <Routes location={location}>
-            <Route path="/" element={<Home />} />
-            <Route path="/page2" element={<Page2 />} />
+            <Route path="/" element={<Home setDirection={setDirection} />} />
+            <Route path="/page2" element={<Page2 setDirection={setDirection} />} />
           </Routes>
         </div>
       </CSSTransition>
