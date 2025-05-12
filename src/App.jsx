@@ -19,6 +19,7 @@ function AnimatedRoutes({ direction, setDirection }) {
           <Routes location={location}>
             <Route path="/" element={<Home setDirection={setDirection} />} />
             <Route path="/page2" element={<Page2 setDirection={setDirection} />} />
+            <Route path="/registration" element={<Registration setDirection={setDirection} />} />
           </Routes>
         </div>
       </CSSTransition>
@@ -27,16 +28,7 @@ function AnimatedRoutes({ direction, setDirection }) {
 }
 
 function App() {
-  const [showRegistration, setShowRegistration] = useState(false);
   const [direction, setDirection] = useState('slide-left');
-
-  const handleRegister = () => {
-    setShowRegistration(false);
-  };
-
-  if (showRegistration) {
-    return <Registration onRegister={handleRegister} />;
-  }
 
   return (
     <Router>
