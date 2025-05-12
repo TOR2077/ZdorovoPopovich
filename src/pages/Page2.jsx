@@ -5,6 +5,7 @@ import avatar from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
 import SleepSlider from '../components/SleepSlider';
+import CaloriesCalculator from '../components/CaloriesCalculator';
 
 export default function Page2({ setDirection }) {
   const [showDashboard, setShowDashboard] = useState(false);
@@ -113,7 +114,7 @@ export default function Page2({ setDirection }) {
         marginBottom: 18
       }}>
         <div style={{width: '100%'}}>
-          <div style={{fontWeight: 'bold', fontSize: '1.15rem', color: '#23243a', marginBottom: 12}}>Твои отчёты</div>
+          <div style={{fontWeight: 'bold', fontSize: '1.15rem', color: '#23243a', marginBottom: 12, textAlign: 'center'}}>Твои отчёты</div>
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', marginBottom: 18, gap: 18}}>
             <div style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #8be04e', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
               <div style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>10</div>
@@ -124,19 +125,7 @@ export default function Page2({ setDirection }) {
               <div style={{fontSize: '1rem', color: '#888'}}>литр</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Блок сна и калорий */}
-      <div style={{
-        border: '1.5px solid #e0e0e0',
-        borderRadius: 16,
-        background: '#fff',
-        boxShadow: '0 2px 12px rgba(164,154,214,0.08)',
-        padding: '18px 12px'
-      }}>
-        <div style={{width: '100%'}}>
-          <div style={{margin: '0 0 18px 0', padding: '0 6px'}}>
+          <div style={{margin: '18px 0 0 0', padding: '0 6px'}}>
             <div style={{fontSize: '1rem', color: '#a49ad6', marginBottom: 4}}>количество сна</div>
             <div
               style={{width: '100%', height: 8, background: '#e5dbe7', borderRadius: 6, marginBottom: 6, position: 'relative', cursor: 'pointer'}}
@@ -148,15 +137,10 @@ export default function Page2({ setDirection }) {
               <span style={{color: '#6a5acd', fontSize: '1.4rem'}}>{Math.floor(sleepMinutes/60)}</span> ч <span style={{color: '#6a5acd', fontSize: '1.4rem'}}>{(sleepMinutes%60).toString().padStart(2,'0')}</span> мин
             </div>
           </div>
-          <div style={{margin: '18px 0 0 0', padding: '0 6px'}}>
-            <div style={{fontSize: '1.05rem', color: '#23243a', marginBottom: 8}}>расчёт калорий</div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1.05rem', color: '#444', marginBottom: 4}}><span>завтрак</span><span style={{color: '#c6e84e', fontSize: '1.2em', margin: '0 8px'}}>★</span><span>(0%)</span></div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1.05rem', color: '#444', marginBottom: 4}}><span>обед</span><span style={{color: '#c6e84e', fontSize: '1.2em', margin: '0 8px'}}>★</span><span>(0%)</span></div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1.05rem', color: '#444', marginBottom: 4}}><span>ужин</span><span style={{color: '#c6e84e', fontSize: '1.2em', margin: '0 8px'}}>★</span><span>(0%)</span></div>
-            <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1.05rem', color: '#444', marginBottom: 4}}><span>перекус</span><span style={{color: '#c6e84e', fontSize: '1.2em', margin: '0 8px'}}>★</span><span>(0%)</span></div>
-          </div>
         </div>
       </div>
+
+      <CaloriesCalculator />
 
       {showSleepModal && (
         <SleepSlider
