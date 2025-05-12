@@ -6,8 +6,9 @@ import Page2 from './pages/Page2';
 import Registration from './pages/Registration';
 import './pageTransition.css';
 
-function AnimatedRoutes({ direction }) {
+function AnimatedRoutes({ direction, setDirection }) {
   const location = useLocation();
+  const navigate = useNavigate();
   return (
     <SwitchTransition mode="out-in">
       <CSSTransition
@@ -15,10 +16,12 @@ function AnimatedRoutes({ direction }) {
         classNames={direction === 'left' ? 'slide-left' : 'slide-right'}
         timeout={400}
       >
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/page2" element={<Page2 />} />
-        </Routes>
+        <div style={{ position: 'relative' }}>
+          <Routes location={location}>
+            <Route path="/" element={<Home navigate={(to) => { setDirection('right'); navigate(to); }} />} />
+            <Route path="/page2" element={<Page2 navigate={(to) => { setDirection('left'); navigate(to); }} />} />
+          </Routes>
+        </div>
       </CSSTransition>
     </SwitchTransition>
   );
@@ -36,25 +39,9 @@ function App() {
     return <Registration onRegister={handleRegister} />;
   }
 
-  // Оборачиваем навигацию, чтобы менять направление анимации
-  function withDirection(Component, dir) {
-    return (props) => {
-      const navigate = useNavigate();
-      const customNavigate = (to) => {
-        setDirection(dir);
-        navigate(to);
-      };
-      return <Component {...props} navigate={customNavigate} />;
-    };
-  }
-
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={withDirection(Home, 'right')({})} />
-        <Route path="/page2" element={withDirection(Page2, 'left')({})} />
-      </Routes>
-      <AnimatedRoutes direction={direction} />
+      <AnimatedRoutes direction={direction} setDirection={setDirection} />
     </Router>
   );
 }
