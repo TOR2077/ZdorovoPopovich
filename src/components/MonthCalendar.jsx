@@ -27,6 +27,7 @@ export default function MonthCalendar({ onClose }) {
   const today = new Date();
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
+  const [selectedDay, setSelectedDay] = useState(null);
 
   const daysInMonth = getDaysInMonth(viewYear, viewMonth);
   const firstDay = getFirstDayOfWeek(viewYear, viewMonth);
@@ -65,13 +66,16 @@ export default function MonthCalendar({ onClose }) {
             const weekNum = weekNumbers[i];
             const isToday = todayIsInView && d === todayNum;
             const isThisWeek = todayIsInView && weekNum === todayWeek;
+            const isSelected = selectedDay === d;
             return (
               <span
                 key={i}
                 className={
                   (isToday ? 'today ' : '') +
-                  (isThisWeek ? 'this-week' : '')
+                  (isThisWeek ? 'this-week ' : '') +
+                  (isSelected ? 'today ' : '')
                 }
+                onClick={() => setSelectedDay(d)}
               >
                 {d}
               </span>
