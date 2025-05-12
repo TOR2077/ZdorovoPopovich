@@ -12,9 +12,9 @@ function AnimatedRoutes({ direction, setDirection }) {
     <SwitchTransition mode="out-in">
       <CSSTransition
         key={location.pathname}
-        classNames={direction === 'right' ? 'slide-left' : 'slide-right'}
+        classNames={direction}
         timeout={400}
-        onExited={() => setDirection('left')}
+        onExited={() => setDirection('slide-left')}
       >
         <div style={{ position: 'relative' }}>
           <Routes location={location}>
@@ -29,7 +29,7 @@ function AnimatedRoutes({ direction, setDirection }) {
 
 function App() {
   const [showRegistration, setShowRegistration] = useState(false);
-  const [direction, setDirection] = useState('left');
+  const [direction, setDirection] = useState('slide-left');
 
   const handleRegister = () => {
     setShowRegistration(false);

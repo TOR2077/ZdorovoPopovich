@@ -146,7 +146,7 @@ function Home({ setDirection }) {
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/') {
-            setDirection('right'); 
+            setDirection('slide-right'); 
             navigate('/');
           }
         }}>
@@ -154,7 +154,7 @@ function Home({ setDirection }) {
         </button>
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/page2') {
-            setDirection('left'); 
+            setDirection('slide-left'); 
             navigate('/page2');
           }
         }}>
