@@ -15,7 +15,7 @@ export default function Registration() {
     e.preventDefault();
     if (!name || !gender || !height || !weight) return;
     const userData = { name, gender, height, weight };
-    localStorage.setItem('userProfile', JSON.stringify(userData));
+    sessionStorage.setItem('userProfile', JSON.stringify(userData));
     navigate('/');
   };
 

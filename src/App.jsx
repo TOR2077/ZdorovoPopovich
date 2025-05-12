@@ -9,14 +9,14 @@ import Registration from './pages/Registration';
 function RedirectToRegistration() {
   const navigate = useNavigate();
   useEffect(() => {
-    const user = localStorage.getItem('userProfile');
+    const user = sessionStorage.getItem('userProfile');
     if (!user && window.location.pathname !== '/registration') {
       navigate('/registration', { replace: true });
     }
   }, [navigate]);
-  // Сброс localStorage при закрытии вкладки/приложения
+  // Сброс sessionStorage при закрытии вкладки/приложения
   useEffect(() => {
-    const clearStorage = () => localStorage.clear();
+    const clearStorage = () => sessionStorage.clear();
     window.addEventListener('beforeunload', clearStorage);
     return () => window.removeEventListener('beforeunload', clearStorage);
   }, []);

@@ -56,7 +56,7 @@ function Home({ setDirection }) {
   // Получаем данные пользователя
   let user = {};
   try {
-    user = JSON.parse(localStorage.getItem('userProfile')) || {};
+    user = JSON.parse(sessionStorage.getItem('userProfile')) || {};
   } catch {}
 
   // Закрытие дропдауна по клику вне
