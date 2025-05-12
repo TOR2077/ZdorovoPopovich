@@ -4,7 +4,7 @@ import avatar from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
 
-export default function Page2({ navigate }) {
+export default function Page2({ navigate, setDirection }) {
   const [showDashboard, setShowDashboard] = useState(false);
   const [water, setWater] = useState(() => {
     // Если есть сохранённое значение — берём, иначе 0
@@ -123,10 +123,10 @@ export default function Page2({ navigate }) {
       </div>
 
       <footer className="home-footer">
-        <button className="footer-icon" onClick={() => navigate('/') }>
+        <button className="footer-icon" onClick={() => { setDirection('right'); navigate('/'); }}>
           <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
         </button>
-        <button className="footer-icon" onClick={() => navigate('/page2')}>
+        <button className="footer-icon" onClick={() => { setDirection('left'); navigate('/page2'); }}>
           <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
         </button>
       </footer>

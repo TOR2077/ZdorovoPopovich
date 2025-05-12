@@ -38,7 +38,7 @@ function isSameDay(d1, d2) {
     d1.getDate() === d2.getDate();
 }
 
-function Home({ navigate }) {
+function Home({ navigate, setDirection }) {
   const today = new Date();
   const [selectedDate, setSelectedDate] = useState(today);
   const [mood, setMood] = useState(null); // null - не выбрано
@@ -142,10 +142,10 @@ function Home({ navigate }) {
       </div>
 
       <footer className="home-footer">
-        <button className="footer-icon" onClick={() => navigate('/') }>
+        <button className="footer-icon" onClick={() => { setDirection('right'); navigate('/'); }}>
           <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
         </button>
-        <button className="footer-icon" onClick={() => navigate('/page2')}>
+        <button className="footer-icon" onClick={() => { setDirection('left'); navigate('/page2'); }}>
           <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
         </button>
       </footer>
