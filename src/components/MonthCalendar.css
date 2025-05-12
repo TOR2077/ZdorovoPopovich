@@ -107,4 +107,12 @@
   background: #eafbe7;
   position: relative;
   z-index: 1;
+}
+
+.month-days .selected-day {
+  border: none;
+  background: #e0d6f7;
+  color: #23243a;
+  font-weight: bold;
+  z-index: 2;
 } 

@@ -71,9 +71,8 @@ export default function MonthCalendar({ onClose }) {
               <span
                 key={i}
                 className={
-                  (isToday ? 'today ' : '') +
                   (isThisWeek ? 'this-week ' : '') +
-                  (isSelected ? 'today ' : '')
+                  (isSelected ? 'selected-day ' : (isToday ? 'today ' : ''))
                 }
                 onClick={() => setSelectedDay(d)}
               >
