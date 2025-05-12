@@ -129,7 +129,7 @@ function Home({ setDirection }) {
 
       <Notes date={selectedDate} />
 
-      <div className="stats-block">
+      <div className="stats-block" style={{marginTop: '32px'}}>
         <div className="stat-item">
           <StepCounter value={steps} onChange={setSteps} />
           <div className="stat-label">Кол-во<br/>шагов</div>
