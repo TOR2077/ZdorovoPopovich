@@ -18,7 +18,7 @@ export default function Registration() {
     if (!name || !gender || !height || !weight) return;
     const userData = { name, gender, height, weight };
     localStorage.setItem('userProfile', JSON.stringify(userData));
-    navigateWithAnimation(navigate, '/', 'slide-right');
+    navigateWithAnimation(navigate, '/');
   };
 
   return (
