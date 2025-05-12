@@ -127,7 +127,7 @@ export default function Page2({ setDirection }) {
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/') {
-            setDirection('right'); 
+            setDirection('left'); 
             navigate('/');
           }
         }}>
