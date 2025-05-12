@@ -1,11 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import avatar from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
 
-export default function Page2() {
+export default function Page2({ navigate }) {
   const [showDashboard, setShowDashboard] = useState(false);
   const [water, setWater] = useState(() => {
     // Если есть сохранённое значение — берём, иначе 0
@@ -13,7 +12,6 @@ export default function Page2() {
     return saved !== null ? Number(saved) : 0;
   });
   const dashboardRef = useRef(null);
-  const navigate = useNavigate();
   const waterCircleRef = useRef(null);
   let startY = useRef(null);
 
