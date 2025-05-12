@@ -81,8 +81,8 @@ export default function Page2({ setDirection }) {
           <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
             <img src={avatar} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
           </button>
+          <span className="greeting" style={{marginLeft: 12}}>Привет{user.name ? `, ${user.name}` : ''}!</span>
         </div>
-        <span className="greeting">Привет{user.name ? `, ${user.name}` : ''}!</span>
         <div className="header-icons calendar-only"></div>
       </header>
 
