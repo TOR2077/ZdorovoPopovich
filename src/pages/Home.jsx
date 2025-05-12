@@ -148,14 +148,14 @@ function Home({ setDirection }) {
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/') {
-            navigateWithAnimation(navigate, '/', 'right');
+            navigate('/');
           }
         }}>
           <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
         </button>
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/page2') {
-            navigateWithAnimation(navigate, '/page2', 'left');
+            navigate('/page2');
           }
         }}>
           <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
