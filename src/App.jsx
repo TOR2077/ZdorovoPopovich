@@ -14,7 +14,6 @@ function AnimatedRoutes({ direction, setDirection }) {
         key={location.pathname}
         classNames={direction}
         timeout={400}
-        onExited={() => setDirection('slide-left')}
       >
         <div style={{ position: 'relative' }}>
           <Routes location={location}>
