@@ -15,7 +15,7 @@ export default function Page2({ setDirection }) {
   });
   const [sleepMinutes, setSleepMinutes] = useState(() => {
     const saved = localStorage.getItem('sleepMinutes');
-    return saved !== null ? Number(saved) : 195; // 3ч 15м по умолчанию
+    return saved !== null ? Number(saved) : 0; // 0 минут по умолчанию
   });
   const [showSleepModal, setShowSleepModal] = useState(false);
   const dashboardRef = useRef(null);
