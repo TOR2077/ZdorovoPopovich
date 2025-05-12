@@ -30,7 +30,7 @@
   box-sizing: border-box;
 }
 .calendar-day-selectable.selected {
-  background: #8be04e;
+  background: #c6e84e;
   color: #23243a;
 }
 .calendar-day-selectable.today {

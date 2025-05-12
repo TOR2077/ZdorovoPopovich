@@ -127,12 +127,12 @@ html, body, #root {
   justify-content: center;
   font-size: 1.3rem;
   color: #23243a;
+  font-weight: bold;
 }
 .stat-label {
   font-size: 0.95rem;
   color: #fff;
   text-align: center;
-  font-weight: bold;
 }
 
 .home-footer {
