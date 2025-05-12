@@ -40,11 +40,7 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home setDirection={setDirection} />} />
-        <Route path="/page2" element={<Page2 setDirection={setDirection} />} />
-      </Routes>
-      <AnimatedRoutes direction={direction} />
+      <AnimatedRoutes direction={direction} setDirection={setDirection} />
     </Router>
   );
 }
