@@ -115,4 +115,7 @@
   color: #23243a;
   font-weight: bold;
   z-index: 2;
+  position: static;
+  top: auto;
+  box-shadow: none;
 } 
