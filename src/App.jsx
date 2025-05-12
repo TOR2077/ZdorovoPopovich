@@ -8,11 +8,13 @@ import './pageTransition.css';
 
 function AnimatedRoutes() {
   const location = useLocation();
+  // slide-left: главная -> вторая, slide-right: вторая -> главная
+  const isHome = location.pathname === '/';
   return (
     <SwitchTransition mode="out-in">
       <CSSTransition
         key={location.pathname}
-        classNames={location.pathname === '/page2' ? 'slide-left' : 'slide-right'}
+        classNames={isHome ? 'slide-right' : 'slide-left'}
         timeout={400}
       >
         <Routes location={location}>
