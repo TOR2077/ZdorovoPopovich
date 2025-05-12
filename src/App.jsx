@@ -9,6 +9,17 @@ import './pageTransition.css';
 function AnimatedRoutes({ direction, setDirection }) {
   const location = useLocation();
   const navigate = useNavigate();
+  const prevPath = useRef(location.pathname);
+
+  useEffect(() => {
+    if (location.pathname === '/page2' && prevPath.current === '/') {
+      setDirection('left');
+    } else if (location.pathname === '/' && prevPath.current === '/page2') {
+      setDirection('right');
+    }
+    prevPath.current = location.pathname;
+  }, [location.pathname, setDirection]);
+
   return (
     <SwitchTransition mode="out-in">
       <CSSTransition
@@ -30,18 +41,6 @@ function AnimatedRoutes({ direction, setDirection }) {
 function App() {
   const [showRegistration, setShowRegistration] = useState(false);
   const [direction, setDirection] = useState('left');
-  const prevPath = useRef('/');
-  const location = useLocation ? useLocation() : { pathname: '/' };
-
-  useEffect(() => {
-    // Определяем направление анимации по изменению пути
-    if (location.pathname === '/page2' && prevPath.current === '/') {
-      setDirection('left');
-    } else if (location.pathname === '/' && prevPath.current === '/page2') {
-      setDirection('right');
-    }
-    prevPath.current = location.pathname;
-  }, [location.pathname]);
 
   const handleRegister = () => {
     setShowRegistration(false);
