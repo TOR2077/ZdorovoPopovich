@@ -7,7 +7,11 @@ import page2Icon from '../assets/Page 2 icon.png';
 
 export default function Page2() {
   const [showDashboard, setShowDashboard] = useState(false);
-  const [water, setWater] = useState(0);
+  const [water, setWater] = useState(() => {
+    // Если есть сохранённое значение — берём, иначе 0
+    const saved = localStorage.getItem('waterAmount');
+    return saved !== null ? Number(saved) : 0;
+  });
   const dashboardRef = useRef(null);
   const navigate = useNavigate();
   const waterCircleRef = useRef(null);
@@ -31,8 +35,8 @@ export default function Page2() {
       const endY = e.changedTouches[0].clientY;
       const diff = startY.current - endY;
       if (Math.abs(diff) > 30) {
-        if (diff > 0) setWater(w => w + 1); // свайп вверх
-        else setWater(w => Math.max(0, w - 1)); // свайп вниз
+        if (diff > 0) setWater(w => Math.max(0, w - 1)); // свайп вверх - убавить
+        else setWater(w => w + 1); // свайп вниз - прибавить
       }
       startY.current = null;
     };
@@ -55,6 +59,11 @@ export default function Page2() {
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [showDashboard]);
+
+  // Сохраняем воду в localStorage при изменении
+  useEffect(() => {
+    localStorage.setItem('waterAmount', water);
+  }, [water]);
 
   return (
     <div className="home-container fade-page">

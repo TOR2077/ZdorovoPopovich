@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import { CSSTransition, SwitchTransition } from 'react-transition-group';
 import Home from './pages/Home';
 import Page2 from './pages/Page2';
 import Registration from './pages/Registration';
 import './pageTransition.css';
 
-function AnimatedRoutes() {
+function AnimatedRoutes({ direction }) {
   const location = useLocation();
-  // slide-left: главная -> вторая, slide-right: вторая -> главная
-  const isHome = location.pathname === '/';
   return (
     <SwitchTransition mode="out-in">
       <CSSTransition
         key={location.pathname}
-        classNames={isHome ? 'slide-right' : 'slide-left'}
+        classNames={direction === 'left' ? 'slide-left' : 'slide-right'}
         timeout={400}
       >
         <Routes location={location}>
@@ -28,6 +26,7 @@ function AnimatedRoutes() {
 
 function App() {
   const [showRegistration, setShowRegistration] = useState(false);
+  const [direction, setDirection] = useState('left');
 
   const handleRegister = () => {
     setShowRegistration(false);
@@ -37,9 +36,25 @@ function App() {
     return <Registration onRegister={handleRegister} />;
   }
 
+  // Оборачиваем навигацию, чтобы менять направление анимации
+  function withDirection(Component, dir) {
+    return (props) => {
+      const navigate = useNavigate();
+      const customNavigate = (to) => {
+        setDirection(dir);
+        navigate(to);
+      };
+      return <Component {...props} navigate={customNavigate} />;
+    };
+  }
+
   return (
     <Router>
-      <AnimatedRoutes />
+      <Routes>
+        <Route path="/" element={withDirection(Home, 'right')({})} />
+        <Route path="/page2" element={withDirection(Page2, 'left')({})} />
+      </Routes>
+      <AnimatedRoutes direction={direction} />
     </Router>
   );
 }

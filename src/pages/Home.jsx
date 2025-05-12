@@ -46,9 +46,7 @@ function Home() {
   const [steps, setSteps] = useState(0);
   const [showMonthCalendar, setShowMonthCalendar] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
-  const [water, setWater] = useState(0);
-  const waterCircleRef = useRef(null);
-  let startY = useRef(null);
+  const [water, setWater] = useState(() => 0);
   const navigate = useNavigate();
   const dashboardRef = useRef(null);
 
@@ -57,31 +55,6 @@ function Home() {
   try {
     user = JSON.parse(localStorage.getItem('userProfile')) || {};
   } catch {}
-
-  // Свайпы для воды
-  useEffect(() => {
-    const node = waterCircleRef.current;
-    if (!node) return;
-    const handleTouchStart = (e) => {
-      startY.current = e.touches[0].clientY;
-    };
-    const handleTouchEnd = (e) => {
-      if (startY.current === null) return;
-      const endY = e.changedTouches[0].clientY;
-      const diff = startY.current - endY;
-      if (Math.abs(diff) > 30) {
-        if (diff > 0) setWater(w => w + 1); // свайп вверх
-        else setWater(w => Math.max(0, w - 1)); // свайп вниз
-      }
-      startY.current = null;
-    };
-    node.addEventListener('touchstart', handleTouchStart);
-    node.addEventListener('touchend', handleTouchEnd);
-    return () => {
-      node.removeEventListener('touchstart', handleTouchStart);
-      node.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
 
   // Закрытие дропдауна по клику вне
   useEffect(() => {
@@ -149,7 +122,7 @@ function Home() {
           <div className="stat-label">Настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
-          <div ref={waterCircleRef} className="stat-circle" style={{border: '2.5px solid #4ee0e0', touchAction: 'none', userSelect: 'none', cursor: 'ns-resize'}}>
+          <div className="stat-circle" style={{border: '2.5px solid #4ee0e0'}}>
             {water}
           </div>
           <div className="stat-label">Кол-во<br/>воды</div>
