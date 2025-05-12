@@ -46,6 +46,7 @@ function Home() {
   const [steps, setSteps] = useState(0);
   const [showMonthCalendar, setShowMonthCalendar] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [water, setWater] = useState(() => Number(localStorage.getItem('waterAmount') || 0));
   const navigate = useNavigate();
   const dashboardRef = useRef(null);
 
@@ -121,7 +122,7 @@ function Home() {
           <div className="stat-label">Настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
-          <div className="stat-circle" />
+          <div className="stat-circle">{water}</div>
           <div className="stat-label">Кол-во<br/>воды</div>
         </div>
       </div>

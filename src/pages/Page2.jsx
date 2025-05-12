@@ -7,14 +7,23 @@ import page2Icon from '../assets/Page 2 icon.png';
 
 export default function Page2() {
   const [showDashboard, setShowDashboard] = useState(false);
+  const [water, setWater] = useState(() => Number(localStorage.getItem('waterAmount') || 5));
+  const [waterAnim, setWaterAnim] = useState(false);
   const dashboardRef = useRef(null);
   const navigate = useNavigate();
+  const waterRef = useRef(null);
+  const touchStartY = useRef(null);
 
   // Получаем данные пользователя
   let user = {};
   try {
     user = JSON.parse(localStorage.getItem('userProfile')) || {};
   } catch {}
+
+  // Сохраняем воду в localStorage при изменении
+  useEffect(() => {
+    localStorage.setItem('waterAmount', water);
+  }, [water]);
 
   // Закрытие дропдауна по клику вне
   useEffect(() => {
@@ -28,8 +37,27 @@ export default function Page2() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [showDashboard]);
 
+  // Обработчики свайпа для воды
+  function handleTouchStart(e) {
+    if (e.touches && e.touches.length === 1) {
+      touchStartY.current = e.touches[0].clientY;
+    }
+  }
+  function handleTouchEnd(e) {
+    if (touchStartY.current === null) return;
+    const endY = e.changedTouches[0].clientY;
+    const diff = touchStartY.current - endY;
+    if (Math.abs(diff) > 30) {
+      setWaterAnim(true);
+      setTimeout(() => setWaterAnim(false), 250);
+      if (diff > 0) setWater(w => w + 1); // свайп вверх
+      else setWater(w => Math.max(0, w - 1)); // свайп вниз
+    }
+    touchStartY.current = null;
+  }
+
   return (
-    <div className="home-container">
+    <div className="home-container fade-page">
       <header className="home-header">
         <div className="header-left">
           <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
@@ -65,8 +93,13 @@ export default function Page2() {
               <div style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>10</div>
               <div style={{fontSize: '1rem', color: '#888'}}>км</div>
             </div>
-            <div style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #4ee0e0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-              <div style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>5</div>
+            <div
+              ref={waterRef}
+              style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #4ee0e0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', touchAction: 'none'}}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div className={waterAnim ? 'water-anim' : ''} style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>{water}</div>
               <div style={{fontSize: '1rem', color: '#888'}}>литр</div>
             </div>
           </div>

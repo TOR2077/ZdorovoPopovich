@@ -408,4 +408,22 @@ html, body, #root {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.water-anim {
+  animation: water-bounce 0.25s;
+}
+@keyframes water-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.25); }
+  60% { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.fade-page {
+  animation: fadeInPage 0.5s;
+}
+@keyframes fadeInPage {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 } 
