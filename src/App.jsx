@@ -4,10 +4,16 @@ import Home from './pages/Home';
 import Page2 from './pages/Page2';
 import Registration from './pages/Registration';
 
+// Очищаем localStorage при каждом запуске приложения
+localStorage.clear();
+
 function RedirectToRegistration() {
   const navigate = useNavigate();
   useEffect(() => {
-    navigate('/registration', { replace: true });
+    const user = localStorage.getItem('userProfile');
+    if (!user && window.location.pathname !== '/registration') {
+      navigate('/registration', { replace: true });
+    }
   }, [navigate]);
   return null;
 }
