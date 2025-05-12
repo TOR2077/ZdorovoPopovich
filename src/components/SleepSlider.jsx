@@ -6,11 +6,21 @@ export default function SleepSlider({ initialMinutes = 0, onSave, onClose }) {
   const hours = Math.floor(minutes / 60);
   const mins = minutes % 60;
 
+  // Обработчик клика по фону
+  const handleBgClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <div style={{
-      position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
-      background: 'rgba(0,0,0,0.18)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
-    }}>
+    <div
+      style={{
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+        background: 'rgba(0,0,0,0.18)', zIndex: 1000, display: 'flex', alignItems: 'center', justifyContent: 'center'
+      }}
+      onClick={handleBgClick}
+    >
       <div style={{ background: '#fff', borderRadius: 18, padding: 24, minWidth: 260, boxShadow: '0 4px 24px rgba(0,0,0,0.13)' }}>
         <div style={{ fontSize: '1.1rem', marginBottom: 18, textAlign: 'center' }}>
           Количество сна: <b>{hours}</b> ч <b>{mins.toString().padStart(2, '0')}</b> мин
@@ -22,7 +32,7 @@ export default function SleepSlider({ initialMinutes = 0, onSave, onClose }) {
           step={10}
           value={minutes}
           onChange={e => setMinutes(Number(e.target.value))}
-          style={{ width: '100%' }}
+          style={{ width: '100%', accentColor: '#a49ad6' }}
         />
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14, marginTop: 8 }}>
           <span>0 ч</span>

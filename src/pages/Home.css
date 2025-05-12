@@ -132,6 +132,7 @@ html, body, #root {
   font-size: 0.95rem;
   color: #fff;
   text-align: center;
+  font-weight: bold;
 }
 
 .home-footer {

@@ -91,8 +91,8 @@ function Home({ setDirection }) {
           <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
             <img src={avatar} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
           </button>
+          <span className="greeting" style={{marginLeft: 12}}>Привет{user.name ? `, ${user.name}` : ''}!</span>
         </div>
-        <span className="greeting">Привет{user.name ? `, ${user.name}` : ''}!</span>
         <div className="header-icons calendar-only">
           <button className="header-icon calendar-btn" onClick={() => setShowMonthCalendar(true)} title="Открыть календарь">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#888" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="4"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
