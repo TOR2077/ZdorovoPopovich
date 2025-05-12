@@ -146,7 +146,7 @@ function Home({ setDirection }) {
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
           if (window.location.pathname !== '/') {
-            setDirection('slide-right'); 
+            setDirection('slide-left'); 
             navigate('/');
           }
         }}>
