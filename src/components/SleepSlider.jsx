@@ -23,7 +23,7 @@ export default function SleepSlider({ initialMinutes = 0, onSave, onClose }) {
     >
       <div style={{ background: '#fff', borderRadius: 18, padding: 24, minWidth: 260, boxShadow: '0 4px 24px rgba(0,0,0,0.13)' }}>
         <div style={{ fontSize: '1.1rem', marginBottom: 18, textAlign: 'center' }}>
-          Количество сна: <b>{hours}</b> ч <b>{mins.toString().padStart(2, '0')}</b> мин
+          Время сна: <b>{hours}</b> ч <b>{mins.toString().padStart(2, '0')}</b> мин
         </div>
         <input
           type="range"

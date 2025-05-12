@@ -126,14 +126,14 @@ export default function Page2({ setDirection }) {
             </div>
           </div>
           <div style={{margin: '18px 0 0 0', padding: '0 6px'}}>
-            <div style={{fontSize: '1rem', color: '#a49ad6', marginBottom: 4}}>количество сна</div>
+            <div style={{fontSize: '1rem', color: '#a49ad6', marginBottom: 4, textAlign: 'center'}}>Время сна</div>
             <div
               style={{width: '100%', height: 8, background: '#e5dbe7', borderRadius: 6, marginBottom: 6, position: 'relative', cursor: 'pointer'}}
               onClick={() => setShowSleepModal(true)}
             >
               <div style={{height: 8, background: '#a49ad6', borderRadius: 6, position: 'absolute', left: 0, top: 0, width: `${(sleepMinutes/720)*100}%`}}></div>
             </div>
-            <div style={{fontSize: '1.3rem', color: '#23243a', fontWeight: 'bold', marginTop: 2}}>
+            <div style={{fontSize: '1.3rem', color: '#23243a', fontWeight: 'bold', marginTop: 2, textAlign: 'center'}}>
               <span style={{color: '#6a5acd', fontSize: '1.4rem'}}>{Math.floor(sleepMinutes/60)}</span> ч <span style={{color: '#6a5acd', fontSize: '1.4rem'}}>{(sleepMinutes%60).toString().padStart(2,'0')}</span> мин
             </div>
           </div>
