@@ -124,12 +124,12 @@ function Home({ setDirection }) {
       <WeekCalendar value={selectedDate} onChange={setSelectedDate} />
 
       <div className="main-image-block user-data-block">
-        <img src={mainLogo} alt="Медведь со звёздами" style={{maxWidth: '100%', maxHeight: 200, display: 'block', margin: '0 auto'}} />
+        <img src={mainLogo} alt="Медведь со звёздами" style={{maxWidth: '100%', maxHeight: 240, display: 'block', margin: '0 auto'}} />
       </div>
 
-      <Notes date={selectedDate} />
+      <Notes date={selectedDate} style={{marginBottom: 0}} />
 
-      <div className="stats-block" style={{marginTop: '32px'}}>
+      <div className="stats-block" style={{marginTop: '12px'}}>
         <div className="stat-item">
           <StepCounter value={steps} onChange={setSteps} />
           <div className="stat-label">Кол-во<br/>шагов</div>
