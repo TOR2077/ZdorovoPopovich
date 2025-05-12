@@ -66,14 +66,15 @@ html, body, #root {
 }
 
 .main-image-block {
-  min-height: 80px;
-  background: #f7f3ff;
-  border-radius: 18px;
-  margin: 18px 0;
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
   text-align: center;
   color: #444;
   font-size: 1.1rem;
-  box-shadow: 0 2px 12px rgba(164,154,214,0.08);
 }
 
 .notes-block {
@@ -383,9 +384,11 @@ html, body, #root {
   align-items: center;
   justify-content: center;
   min-height: 80px;
-  background: #fafafa;
-  border-radius: 12px;
-  margin: 18px 0;
+  background: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
   text-align: center;
   color: #444;
   font-size: 1.1rem;

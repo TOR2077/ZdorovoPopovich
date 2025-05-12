@@ -124,7 +124,7 @@ function Home({ setDirection }) {
       <WeekCalendar value={selectedDate} onChange={setSelectedDate} />
 
       <div className="main-image-block user-data-block">
-        <img src={mainLogo} alt="Медведь со звёздами" style={{maxWidth: '100%', maxHeight: 180, display: 'block', margin: '0 auto'}} />
+        <img src={mainLogo} alt="Медведь со звёздами" style={{maxWidth: '100%', maxHeight: 200, display: 'block', margin: '0 auto'}} />
       </div>
 
       <Notes date={selectedDate} />
