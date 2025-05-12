@@ -4,6 +4,7 @@ import './Home.css';
 import avatar from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
+import SleepSlider from '../components/SleepSlider';
 
 export default function Page2({ setDirection }) {
   const [showDashboard, setShowDashboard] = useState(false);
@@ -11,6 +12,11 @@ export default function Page2({ setDirection }) {
     const saved = localStorage.getItem('waterAmount');
     return saved !== null ? Number(saved) : 0;
   });
+  const [sleepMinutes, setSleepMinutes] = useState(() => {
+    const saved = localStorage.getItem('sleepMinutes');
+    return saved !== null ? Number(saved) : 195; // 3ч 15м по умолчанию
+  });
+  const [showSleepModal, setShowSleepModal] = useState(false);
   const dashboardRef = useRef(null);
   const navigate = useNavigate();
   const waterCircleRef = useRef(null);
@@ -63,6 +69,11 @@ export default function Page2({ setDirection }) {
     localStorage.setItem('waterAmount', water);
   }, [water]);
 
+  // Сохраняем sleepMinutes в localStorage при изменении
+  useEffect(() => {
+    localStorage.setItem('sleepMinutes', sleepMinutes);
+  }, [sleepMinutes]);
+
   return (
     <div className="home-container">
       <header className="home-header">
@@ -107,10 +118,15 @@ export default function Page2({ setDirection }) {
           </div>
           <div style={{margin: '18px 0 18px 0', padding: '0 6px'}}>
             <div style={{fontSize: '1rem', color: '#a49ad6', marginBottom: 4}}>количество сна</div>
-            <div style={{width: '100%', height: 8, background: '#e5dbe7', borderRadius: 6, marginBottom: 6, position: 'relative'}}>
-              <div style={{height: 8, background: '#a49ad6', borderRadius: 6, position: 'absolute', left: 0, top: 0, width: '40%'}}></div>
+            <div
+              style={{width: '100%', height: 8, background: '#e5dbe7', borderRadius: 6, marginBottom: 6, position: 'relative', cursor: 'pointer'}}
+              onClick={() => setShowSleepModal(true)}
+            >
+              <div style={{height: 8, background: '#a49ad6', borderRadius: 6, position: 'absolute', left: 0, top: 0, width: `${(sleepMinutes/720)*100}%`}}></div>
             </div>
-            <div style={{fontSize: '1.3rem', color: '#23243a', fontWeight: 'bold', marginTop: 2}}><span style={{color: '#6a5acd', fontSize: '1.4rem'}}>3</span> ч <span style={{color: '#6a5acd', fontSize: '1.4rem'}}>15</span> мин</div>
+            <div style={{fontSize: '1.3rem', color: '#23243a', fontWeight: 'bold', marginTop: 2}}>
+              <span style={{color: '#6a5acd', fontSize: '1.4rem'}}>{Math.floor(sleepMinutes/60)}</span> ч <span style={{color: '#6a5acd', fontSize: '1.4rem'}}>{(sleepMinutes%60).toString().padStart(2,'0')}</span> мин
+            </div>
           </div>
           <div style={{margin: '18px 0 0 0', padding: '0 6px'}}>
             <div style={{fontSize: '1.05rem', color: '#23243a', marginBottom: 8}}>расчёт калорий</div>
@@ -121,6 +137,14 @@ export default function Page2({ setDirection }) {
           </div>
         </div>
       </div>
+
+      {showSleepModal && (
+        <SleepSlider
+          initialMinutes={sleepMinutes}
+          onSave={val => { setSleepMinutes(val); setShowSleepModal(false); }}
+          onClose={() => setShowSleepModal(false)}
+        />
+      )}
 
       <footer className="home-footer">
         <button className="footer-icon" onClick={() => { 
