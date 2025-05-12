@@ -197,13 +197,14 @@ html, body, #root {
 }
 
 .logout-item {
-  color: #f44336;
+  color: #f44336 !important;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .logout-item:hover {
-  background-color: rgba(244, 67, 54, 0.1);
+  background: #f44336 !important;
+  color: #fff !important;
 }
 
 .profile-dashboard {
