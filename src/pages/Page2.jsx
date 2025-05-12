@@ -125,10 +125,20 @@ export default function Page2({ setDirection }) {
       </div>
 
       <footer className="home-footer">
-        <button className="footer-icon" onClick={() => { setDirection('left'); navigate('/'); }}>
+        <button className="footer-icon" onClick={() => { 
+          if (window.location.pathname !== '/') {
+            setDirection('left'); 
+            navigate('/');
+          }
+        }}>
           <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
         </button>
-        <button className="footer-icon" onClick={() => { setDirection('right'); navigate('/page2'); }}>
+        <button className="footer-icon" onClick={() => { 
+          if (window.location.pathname !== '/page2') {
+            setDirection('right'); 
+            navigate('/page2');
+          }
+        }}>
           <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
         </button>
       </footer>
