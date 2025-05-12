@@ -8,7 +8,6 @@ import page2Icon from '../assets/Page 2 icon.png';
 export default function Page2({ setDirection }) {
   const [showDashboard, setShowDashboard] = useState(false);
   const [water, setWater] = useState(() => {
-    // Если есть сохранённое значение — берём, иначе 0
     const saved = localStorage.getItem('waterAmount');
     return saved !== null ? Number(saved) : 0;
   });
@@ -60,7 +59,6 @@ export default function Page2({ setDirection }) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [showDashboard]);
 
-  // Сохраняем воду в localStorage при изменении
   useEffect(() => {
     localStorage.setItem('waterAmount', water);
   }, [water]);
