@@ -200,7 +200,13 @@ html, body, #root {
   color: #f44336 !important;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
-  border-radius: 10px;
+  border-radius: 0 0 18px 18px;
+  width: 100%;
+  padding: 12px 0;
+  margin: 0;
+  text-align: left;
+  box-sizing: border-box;
+  display: block;
 }
 
 .logout-item:hover {
