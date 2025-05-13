@@ -73,7 +73,7 @@ function Home({ setDirection }) {
 
   useEffect(() => {
     function updateWater() {
-      const saved = localStorage.getItem('waterAmount');
+      const saved = sessionStorage.getItem('waterAmount');
       setWater(saved !== null ? Number(saved) : 0);
     }
     updateWater();
