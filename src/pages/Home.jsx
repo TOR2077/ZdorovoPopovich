@@ -53,7 +53,7 @@ function Home({ setDirection }) {
   const navigate = useNavigate();
   // const { navigateWithAnimation } = useAnimation();
 
-  // Получаем данные пользователя
+  // Получаем данные пользовател
   let user = {};
   try {
     user = JSON.parse(sessionStorage.getItem('userProfile')) || {};
