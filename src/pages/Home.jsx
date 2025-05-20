@@ -49,6 +49,10 @@ function Home({ setDirection }) {
   const [showMonthCalendar, setShowMonthCalendar] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
   const [water, setWater] = useState(() => 0);
+  const [distance, setDistance] = useState(() => {
+    const saved = sessionStorage.getItem('distance');
+    return saved !== null ? Number(saved) : 0;
+  });
   const dashboardRef = useRef(null);
   const navigate = useNavigate();
   // const { navigateWithAnimation } = useAnimation();
@@ -84,6 +88,14 @@ function Home({ setDirection }) {
       document.removeEventListener('visibilitychange', updateWater);
     };
   }, []);
+
+  useEffect(() => {
+    sessionStorage.setItem('distance', distance);
+  }, [distance]);
+
+  useEffect(() => {
+    sessionStorage.setItem('waterAmount', water);
+  }, [water]);
 
   return (
     <div className="home-container">
@@ -131,12 +143,9 @@ function Home({ setDirection }) {
 
       <div className="stats-block" style={{marginTop: '12px'}}>
         <div className="stat-item">
-          <div className="stat-circle">
-            {(() => {
-              const saved = sessionStorage.getItem('distance');
-              return saved !== null ? Number(saved) : 0;
-            })()}
-          </div>
+          <button className="stat-btn" onClick={() => setDistance(d => Math.max(0, +(d - 0.1).toFixed(1)))}>−</button>
+          <div className="stat-circle">{distance.toFixed(1)}</div>
+          <button className="stat-btn" onClick={() => setDistance(d => +(d + 0.1).toFixed(1))}>+</button>
           <div className="stat-label">Расстояние<br/>(км)</div>
         </div>
         <div className="stat-item mood-item">
@@ -144,9 +153,9 @@ function Home({ setDirection }) {
           <div className="stat-label">Настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
-          <div className="stat-circle">
-            {water}
-          </div>
+          <button className="stat-btn" onClick={() => setWater(w => Math.max(0, +(w - 0.25).toFixed(2)))}>−</button>
+          <div className="stat-circle">{water.toFixed(2)}</div>
+          <button className="stat-btn" onClick={() => setWater(w => +(w + 0.25).toFixed(2))}>+</button>
           <div className="stat-label">Кол-во<br/>воды</div>
         </div>
       </div>
