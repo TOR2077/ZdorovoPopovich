@@ -18,25 +18,23 @@ export default function MoodPicker({ value, onChange }) {
     <div className="mood-picker-wrapper">
       <div
         className="stat-circle mood-emoji"
-        style={{ background: '#fff', border: `4px solid ${mood.color}`, width: 48, height: 48, fontSize: 28, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}
-        onClick={() => setShowPicker((v) => !v)}
-        title={mood.label}
-      >
-        <span style={{
+        style={{ 
           background: hasValue ? mood.color : '#bdbdbd',
-          borderRadius: '50%',
-          width: 36,
-          height: 36,
+          border: `4px solid ${mood.color}`,
+          width: 48,
+          height: 48,
+          fontSize: 32,
+          cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#23243a',
-          fontSize: 28,
-          position: 'absolute',
-          left: '50%',
-          top: '50%',
-          transform: 'translate(-50%, -50%)',
-        }}>{mood.emoji}</span>
+          position: 'relative',
+          borderRadius: '50%'
+        }}
+        onClick={() => setShowPicker((v) => !v)}
+        title={mood.label}
+      >
+        {mood.emoji}
       </div>
       {showPicker && (
         <div className="mood-picker-horizontal">
@@ -44,7 +42,18 @@ export default function MoodPicker({ value, onChange }) {
             <div
               key={m.label}
               className="mood-option"
-              style={{ background: m.color, color: '#fff', fontSize: 28, border: value === idx ? '2px solid #333' : 'none', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              style={{ 
+                background: m.color,
+                color: '#fff',
+                fontSize: 32,
+                border: value === idx ? '2px solid #333' : 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 48,
+                height: 48,
+                borderRadius: '50%'
+              }}
               onClick={() => { onChange(idx); setShowPicker(false); }}
               title={m.label}
             >
