@@ -131,8 +131,13 @@ function Home({ setDirection }) {
 
       <div className="stats-block" style={{marginTop: '12px'}}>
         <div className="stat-item">
-          <StepCounter value={steps} onChange={setSteps} />
-          <div className="stat-label">Кол-во<br/>шагов</div>
+          <div className="stat-circle">
+            {(() => {
+              const saved = sessionStorage.getItem('distance');
+              return saved !== null ? Number(saved) : 0;
+            })()}
+          </div>
+          <div className="stat-label">Расстояние<br/>(км)</div>
         </div>
         <div className="stat-item mood-item">
           <MoodPicker value={mood} onChange={setMood} />
