@@ -126,17 +126,17 @@ export default function Page2({ setDirection }) {
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', marginBottom: 18, gap: 18}}>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0}}>
               <div style={{display: 'flex', alignItems: 'center', gap: 4}}>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setDistance(d => Math.max(0, +(d - 0.1).toFixed(1)))}>−</button>
-                <div style={{width: 48, height: 48, borderRadius: '50%', background: '#fff', border: '4px solid #8be04e', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', fontWeight: 'bold', color: '#23243a'}}>{distance.toFixed(1)}</div>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setDistance(d => +(d + 0.1).toFixed(1))}>+</button>
+                <button style={{fontSize: 24, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e', height: 82, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setDistance(d => Math.max(0, +(d - 0.1).toFixed(1)))}>−</button>
+                <div style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #8be04e', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.7rem', fontWeight: 'bold', color: '#23243a'}}>{distance.toFixed(1)}</div>
+                <button style={{fontSize: 24, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e', height: 82, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setDistance(d => +(d + 0.1).toFixed(1))}>+</button>
               </div>
               <div style={{fontSize: '1rem', color: '#888', marginTop: 2}}>км</div>
             </div>
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0}}>
               <div style={{display: 'flex', alignItems: 'center', gap: 4}}>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setWater(w => Math.max(0, +(w - 0.25).toFixed(2)))}>−</button>
-                <div ref={waterCircleRef} style={{width: 48, height: 48, borderRadius: '50%', background: '#fff', border: '4px solid #4ee0e0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', fontWeight: 'bold', color: '#23243a'}}>{water.toFixed(2)}</div>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setWater(w => +(w + 0.25).toFixed(2))}>+</button>
+                <button style={{fontSize: 24, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0', height: 82, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setWater(w => Math.max(0, +(w - 0.25).toFixed(2)))}>−</button>
+                <div ref={waterCircleRef} style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #4ee0e0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.7rem', fontWeight: 'bold', color: '#23243a'}}>{water.toFixed(2)}</div>
+                <button style={{fontSize: 24, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0', height: 82, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setWater(w => +(w + 0.25).toFixed(2))}>+</button>
               </div>
               <div style={{fontSize: '1rem', color: '#888', marginTop: 2}}>литр</div>
             </div>
