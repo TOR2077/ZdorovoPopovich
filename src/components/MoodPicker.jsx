@@ -20,7 +20,7 @@ export default function MoodPicker({ value, onChange }) {
         className="stat-circle mood-emoji"
         style={{ 
           background: hasValue ? mood.color : '#bdbdbd',
-          border: `4px solid ${mood.color}`,
+          border: `4px solid ${hasValue ? mood.color : '#bdbdbd'}`,
           width: 48,
           height: 48,
           fontSize: 32,
