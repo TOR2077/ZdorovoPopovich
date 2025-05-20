@@ -130,6 +130,10 @@ html, body, #root {
   color: #23243a;
   font-weight: bold;
 }
+.stat-circle.mood {
+  background: none !important;
+  box-shadow: none !important;
+}
 .stat-label {
   font-size: 0.95rem;
   color: #fff;

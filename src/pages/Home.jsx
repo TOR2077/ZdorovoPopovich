@@ -147,7 +147,7 @@ function Home({ setDirection }) {
           <div className="stat-label">Расстояние<br/>(км)</div>
         </div>
         <div className="stat-item mood-item">
-          <div className="stat-circle" style={{width: 48, height: 48, fontSize: '1.3rem', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div className="stat-circle mood" style={{width: 48, height: 48, fontSize: '1.3rem', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <MoodPicker value={mood} onChange={setMood} />
           </div>
           <div className="stat-label">Настроение<br/>(моська)</div>
