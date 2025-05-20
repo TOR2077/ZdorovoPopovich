@@ -22,6 +22,10 @@ export default function Page2({ setDirection }) {
   const navigate = useNavigate();
   const waterCircleRef = useRef(null);
   let startY = useRef(null);
+  const [distance, setDistance] = useState(() => {
+    const saved = sessionStorage.getItem('distance');
+    return saved !== null ? Number(saved) : 0;
+  });
 
   // Получаем данные пользователя
   let user = {};
@@ -75,6 +79,10 @@ export default function Page2({ setDirection }) {
     sessionStorage.setItem('sleepMinutes', sleepMinutes);
   }, [sleepMinutes]);
 
+  useEffect(() => {
+    sessionStorage.setItem('distance', distance);
+  }, [distance]);
+
   return (
     <div className="home-container">
       <header className="home-header">
@@ -117,11 +125,19 @@ export default function Page2({ setDirection }) {
           <div style={{fontWeight: 'bold', fontSize: '1.15rem', color: '#23243a', marginBottom: 12, textAlign: 'center'}}>Твои отчёты</div>
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', marginBottom: 18, gap: 18}}>
             <div style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #8be04e', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-              <div style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>10</div>
+              <div style={{display: 'flex', alignItems: 'center', gap: 6}}>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e'}} onClick={() => setDistance(d => Math.max(0, +(d - 0.1).toFixed(1)))}>−</button>
+                <span style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>{distance.toFixed(1)}</span>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e'}} onClick={() => setDistance(d => +(d + 0.1).toFixed(1))}>+</button>
+              </div>
               <div style={{fontSize: '1rem', color: '#888'}}>км</div>
             </div>
             <div ref={waterCircleRef} style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #4ee0e0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', touchAction: 'none', userSelect: 'none', cursor: 'ns-resize'}}>
-              <div style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>{water}</div>
+              <div style={{display: 'flex', alignItems: 'center', gap: 6}}>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0'}} onClick={() => setWater(w => Math.max(0, +(w - 0.25).toFixed(2)))}>−</button>
+                <span style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>{water.toFixed(2)}</span>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0'}} onClick={() => setWater(w => +(w + 0.25).toFixed(2))}>+</button>
+              </div>
               <div style={{fontSize: '1rem', color: '#888'}}>литр</div>
             </div>
           </div>

@@ -143,9 +143,7 @@ function Home({ setDirection }) {
 
       <div className="stats-block" style={{marginTop: '12px'}}>
         <div className="stat-item">
-          <button className="stat-btn" onClick={() => setDistance(d => Math.max(0, +(d - 0.1).toFixed(1)))}>−</button>
-          <div className="stat-circle">{distance.toFixed(1)}</div>
-          <button className="stat-btn" onClick={() => setDistance(d => +(d + 0.1).toFixed(1))}>+</button>
+          <div className="stat-circle" style={{width: 60, height: 60, fontSize: '1.6rem'}}>{distance.toFixed(1)}</div>
           <div className="stat-label">Расстояние<br/>(км)</div>
         </div>
         <div className="stat-item mood-item">
@@ -153,9 +151,7 @@ function Home({ setDirection }) {
           <div className="stat-label">Настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
-          <button className="stat-btn" onClick={() => setWater(w => Math.max(0, +(w - 0.25).toFixed(2)))}>−</button>
-          <div className="stat-circle">{water.toFixed(2)}</div>
-          <button className="stat-btn" onClick={() => setWater(w => +(w + 0.25).toFixed(2))}>+</button>
+          <div className="stat-circle" style={{width: 60, height: 60, fontSize: '1.6rem'}}>{water.toFixed(2)}</div>
           <div className="stat-label">Кол-во<br/>воды</div>
         </div>
       </div>
