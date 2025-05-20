@@ -143,7 +143,7 @@ function Home({ setDirection }) {
 
       <div className="stats-block" style={{marginTop: '12px'}}>
         <div className="stat-item">
-          <div className="stat-circle" style={{width: 60, height: 60, fontSize: '1.6rem'}}>{distance.toFixed(1)}</div>
+          <div className="stat-circle" style={{width: 48, height: 48, fontSize: '1.3rem'}}>{distance.toFixed(1)}</div>
           <div className="stat-label">Расстояние<br/>(км)</div>
         </div>
         <div className="stat-item mood-item">
@@ -151,7 +151,7 @@ function Home({ setDirection }) {
           <div className="stat-label">Настроение<br/>(моська)</div>
         </div>
         <div className="stat-item">
-          <div className="stat-circle" style={{width: 60, height: 60, fontSize: '1.6rem'}}>{water.toFixed(2)}</div>
+          <div className="stat-circle" style={{width: 48, height: 48, fontSize: '1.3rem'}}>{water.toFixed(2)}</div>
           <div className="stat-label">Кол-во<br/>воды</div>
         </div>
       </div>

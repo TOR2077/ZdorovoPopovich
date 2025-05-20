@@ -124,21 +124,21 @@ export default function Page2({ setDirection }) {
         <div style={{width: '100%'}}>
           <div style={{fontWeight: 'bold', fontSize: '1.15rem', color: '#23243a', marginBottom: 12, textAlign: 'center'}}>Твои отчёты</div>
           <div style={{display: 'flex', justifyContent: 'space-around', alignItems: 'flex-end', marginBottom: 18, gap: 18}}>
-            <div style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #8be04e', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-              <div style={{display: 'flex', alignItems: 'center', gap: 6}}>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e'}} onClick={() => setDistance(d => Math.max(0, +(d - 0.1).toFixed(1)))}>−</button>
-                <span style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>{distance.toFixed(1)}</span>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e'}} onClick={() => setDistance(d => +(d + 0.1).toFixed(1))}>+</button>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: 4}}>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setDistance(d => Math.max(0, +(d - 0.1).toFixed(1)))}>−</button>
+                <div style={{width: 48, height: 48, borderRadius: '50%', background: '#fff', border: '4px solid #8be04e', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', fontWeight: 'bold', color: '#23243a'}}>{distance.toFixed(1)}</div>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#8be04e', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setDistance(d => +(d + 0.1).toFixed(1))}>+</button>
               </div>
-              <div style={{fontSize: '1rem', color: '#888'}}>км</div>
+              <div style={{fontSize: '1rem', color: '#888', marginTop: 2}}>км</div>
             </div>
-            <div ref={waterCircleRef} style={{width: 82, height: 82, borderRadius: '50%', background: '#fff', border: '4px solid #4ee0e0', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', touchAction: 'none', userSelect: 'none', cursor: 'ns-resize'}}>
-              <div style={{display: 'flex', alignItems: 'center', gap: 6}}>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0'}} onClick={() => setWater(w => Math.max(0, +(w - 0.25).toFixed(2)))}>−</button>
-                <span style={{fontSize: '1.5rem', fontWeight: 'bold', color: '#23243a', marginBottom: 2}}>{water.toFixed(2)}</span>
-                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0'}} onClick={() => setWater(w => +(w + 0.25).toFixed(2))}>+</button>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 0}}>
+              <div style={{display: 'flex', alignItems: 'center', gap: 4}}>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setWater(w => Math.max(0, +(w - 0.25).toFixed(2)))}>−</button>
+                <div ref={waterCircleRef} style={{width: 48, height: 48, borderRadius: '50%', background: '#fff', border: '4px solid #4ee0e0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.4rem', fontWeight: 'bold', color: '#23243a'}}>{water.toFixed(2)}</div>
+                <button style={{fontSize: 22, border: 'none', background: 'none', cursor: 'pointer', color: '#4ee0e0', height: 48, width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center'}} onClick={() => setWater(w => +(w + 0.25).toFixed(2))}>+</button>
               </div>
-              <div style={{fontSize: '1rem', color: '#888'}}>литр</div>
+              <div style={{fontSize: '1rem', color: '#888', marginTop: 2}}>литр</div>
             </div>
           </div>
           <div style={{margin: '18px 0 0 0', padding: '0 6px'}}>
