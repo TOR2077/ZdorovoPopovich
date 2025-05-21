@@ -79,6 +79,7 @@
 /* Стили для редактирования */
 .profile-edit-btn {
   margin-top: 24px;
+  margin-bottom: 32px;
   background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
   color: #b6ff2b;
   border: none;
