@@ -71,4 +71,105 @@
   padding: 18px 0;
   text-align: center;
   box-shadow: 0 2px 8px #0001;
+}
+
+/* Стили для редактирования */
+.profile-edit-btn {
+  margin-top: 24px;
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 12px 32px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0001;
+  z-index: 2;
+}
+
+.profile-edit-form {
+  width: 80%;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 2;
+  background: #f8f8f8;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.profile-edit-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-edit-field input,
+.profile-edit-field select {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: 2px solid #6b6e9c;
+  border-radius: 12px;
+  background: #fff;
+  color: #23243a;
+  outline: none;
+}
+
+.profile-edit-field input:focus,
+.profile-edit-field select:focus {
+  border-color: #b6ff2b;
+}
+
+.profile-edit-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.profile-save-btn,
+.profile-cancel-btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.profile-save-btn {
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+}
+
+.profile-cancel-btn {
+  background: #e0e0e0;
+  color: #23243a;
+}
+
+@media (max-width: 480px) {
+  .profile-edit-form {
+    width: 90%;
+    padding: 16px;
+  }
+  
+  .profile-edit-field input,
+  .profile-edit-field select {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+  .profile-save-btn,
+  .profile-cancel-btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+  .profile-edit-btn {
+    font-size: 1.2rem;
+    padding: 10px 24px;
+  }
 } 
