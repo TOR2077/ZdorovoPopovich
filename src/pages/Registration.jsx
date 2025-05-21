@@ -29,6 +29,7 @@ export default function Registration() {
           </label>
           <label>ПОЛ
             <select value={gender} onChange={e => setGender(e.target.value)} required>
+              <option value="">...</option>
               {genders.map(g => <option key={g} value={g}>{g}</option>)}
             </select>
           </label>
