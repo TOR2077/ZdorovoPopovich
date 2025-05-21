@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-route
 import Home from './pages/Home';
 import Page2 from './pages/Page2';
 import Registration from './pages/Registration';
+import Profile from './pages/Profile';
 
 // localStorage.clear(); // Отключаю очистку localStorage
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/page2" element={<Page2 />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );
