@@ -6,6 +6,7 @@ import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
 import SleepSlider from '../components/SleepSlider';
 import CaloriesCalculator from '../components/CaloriesCalculator';
+import BottomNav from '../components/BottomNav';
 
 export default function Page2({ setDirection }) {
   const [showDashboard, setShowDashboard] = useState(false);
@@ -166,22 +167,7 @@ export default function Page2({ setDirection }) {
         />
       )}
 
-      <footer className="home-footer">
-        <button className="footer-icon" onClick={() => { 
-          if (window.location.pathname !== '/') {
-            navigate('/');
-          }
-        }}>
-          <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
-        </button>
-        <button className="footer-icon" onClick={() => { 
-          if (window.location.pathname !== '/page2') {
-            navigate('/page2');
-          }
-        }}>
-          <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
-        </button>
-      </footer>
+      <BottomNav />
     </div>
   );
 }

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import avatar from '../assets/avatar.png';
-import homeIcon from '../assets/Home icon.png';
-import page2Icon from '../assets/Page 2 icon.png';
+import BottomNav from '../components/BottomNav';
 import './Profile.css';
 
 const genders = ['Мужской', 'Женский'];
@@ -103,15 +102,8 @@ function Profile() {
           </div>
         </div>
       )}
-
-      <footer className="profile-footer">
-        <button className="footer-icon" onClick={() => navigate('/')}>
-          <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
-        </button>
-        <button className="footer-icon" onClick={() => navigate('/page2')}>
-          <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
-        </button>
-      </footer>
+      
+      <BottomNav />
     </div>
   );
 }

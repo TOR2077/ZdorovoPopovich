@@ -167,6 +167,12 @@ html, body, #root {
   padding: 0;
   box-shadow: 0 2px 8px rgba(164,154,214,0.08);
 }
+
+.footer-icon.active {
+  background: #e5dbe7;
+  box-shadow: inset 0 2px 4px rgba(164,154,214,0.2);
+}
+
 .footer-icon:active {
   background: #e5dbe7;
 }
