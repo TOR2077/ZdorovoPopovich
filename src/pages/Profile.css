@@ -56,6 +56,7 @@
 
 .profile-info-block {
   width: 80%;
+  max-width: 400px;
   margin-top: 32px;
   display: flex;
   flex-direction: column;
@@ -67,9 +68,9 @@
   background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
   color: #b6ff2b;
   border-radius: 40px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  padding: 18px 0;
+  padding: 14px 0;
   text-align: center;
   box-shadow: 0 2px 8px #0001;
 }
@@ -95,13 +96,11 @@
   margin-top: 32px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 24px;
   z-index: 2;
-  background: #f8f8f8;
-  border-radius: 22px;
   padding: 24px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   box-sizing: border-box;
+  margin-bottom: 80px; /* Для нижнего меню */
 }
 
 .profile-edit-field {
@@ -113,25 +112,40 @@
 .profile-edit-field input,
 .profile-edit-field select {
   width: 100%;
-  padding: 12px;
-  font-size: 1.2rem;
-  border: 2px solid #6b6e9c;
-  border-radius: 12px;
-  background: #fff;
-  color: #23243a;
+  padding: 14px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+  border: none;
+  border-radius: 40px;
   outline: none;
   box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 2px 8px #0001;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
-.profile-edit-field input:focus,
-.profile-edit-field select:focus {
-  border-color: #b6ff2b;
+.profile-edit-field select {
+  background-image: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%), url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b6ff2b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: auto 1em, 1em;
+  padding-right: 2.5rem;
+}
+
+.profile-edit-field input::placeholder {
+  color: #b6ff2b;
+  opacity: 0.7;
 }
 
 .profile-edit-buttons {
   display: flex;
   gap: 12px;
   margin-top: 12px;
+  padding: 0 12px;
 }
 
 .profile-save-btn,
@@ -155,6 +169,50 @@
   color: #23243a;
 }
 
+/* Стили для нижнего меню */
+.profile-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  padding: 10px 0 18px 0;
+  box-shadow: 0 -2px 12px rgba(164,154,214,0.08);
+  z-index: 10;
+}
+
+.footer-icon {
+  width: 48px;
+  height: 48px;
+  background: #f7f3ff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(164,154,214,0.08);
+}
+
+.footer-icon:active {
+  background: #e5dbe7;
+}
+
+.footer-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
 @media (max-width: 480px) {
   .profile-edit-form {
     width: 95%;
@@ -162,14 +220,10 @@
     margin-top: 24px;
   }
   
-  .profile-info-block {
-    width: 95%;
-  }
-  
   .profile-edit-field input,
   .profile-edit-field select {
-    font-size: 1rem;
-    padding: 10px;
+    font-size: 1.5rem;
+    padding: 14px 0;
   }
   
   .profile-save-btn,
@@ -178,8 +232,17 @@
     padding: 10px;
   }
   
-  .profile-edit-btn {
-    font-size: 1.2rem;
-    padding: 10px 24px;
+  .footer-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .footer-icon img {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .profile-footer {
+    padding: 6px 0 12px 0;
   }
 } 

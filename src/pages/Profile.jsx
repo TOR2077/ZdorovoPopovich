@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import avatar from '../assets/avatar.png';
+import homeIcon from '../assets/Home icon.png';
+import page2Icon from '../assets/Page 2 icon.png';
 import './Profile.css';
 
 const genders = ['Мужской', 'Женский'];
@@ -7,6 +10,7 @@ const genders = ['Мужской', 'Женский'];
 function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({});
+  const navigate = useNavigate();
   
   let user = {};
   try {
@@ -60,7 +64,7 @@ function Profile() {
               type="text"
               value={editData.name || ''}
               onChange={e => setEditData({...editData, name: e.target.value})}
-              placeholder="Имя"
+              placeholder="имя"
             />
           </div>
           <div className="profile-edit-field">
@@ -68,7 +72,7 @@ function Profile() {
               value={editData.gender || ''}
               onChange={e => setEditData({...editData, gender: e.target.value})}
             >
-              <option value="">Выберите пол</option>
+              <option value="">пол</option>
               {genders.map(g => (
                 <option key={g} value={g}>{g}</option>
               ))}
@@ -79,7 +83,7 @@ function Profile() {
               type="number"
               value={editData.height || ''}
               onChange={e => setEditData({...editData, height: e.target.value})}
-              placeholder="Рост"
+              placeholder="рост"
             />
           </div>
           <div className="profile-edit-field">
@@ -87,7 +91,7 @@ function Profile() {
               type="number"
               value={editData.weight || ''}
               onChange={e => setEditData({...editData, weight: e.target.value})}
-              placeholder="Вес"
+              placeholder="вес"
             />
           </div>
           <div className="profile-edit-buttons">
@@ -100,6 +104,15 @@ function Profile() {
           </div>
         </div>
       )}
+
+      <footer className="profile-footer">
+        <button className="footer-icon" onClick={() => navigate('/')}>
+          <img src={homeIcon} alt="Домой" style={{width: 40, height: 40}} />
+        </button>
+        <button className="footer-icon" onClick={() => navigate('/page2')}>
+          <img src={page2Icon} alt="Заметки" style={{width: 40, height: 40}} />
+        </button>
+      </footer>
     </div>
   );
 }
