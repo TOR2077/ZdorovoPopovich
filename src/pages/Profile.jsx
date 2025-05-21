@@ -91,11 +91,11 @@ function Profile() {
             />
           </div>
           <div className="profile-edit-buttons">
-            <button className="profile-save-btn" onClick={handleSave}>
-              Сохранить
-            </button>
             <button className="profile-cancel-btn" onClick={handleCancel}>
               Отмена
+            </button>
+            <button className="profile-save-btn" onClick={handleSave}>
+              Сохранить
             </button>
           </div>
         </div>
