@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 import avatar from '../assets/avatar.png';
+import avatarDefault from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
 import SleepSlider from '../components/SleepSlider';
@@ -33,6 +34,7 @@ export default function Page2({ setDirection }) {
   try {
     user = JSON.parse(sessionStorage.getItem('userProfile')) || {};
   } catch {}
+  const avatarSrc = user.avatar || avatarDefault;
 
   // Свайпы для воды
   useEffect(() => {
@@ -89,7 +91,7 @@ export default function Page2({ setDirection }) {
       <header className="home-header">
         <div className="header-left">
           <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
-            <img src={avatar} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
+            <img src={avatarSrc} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
           </button>
           <span className="greeting" style={{marginLeft: 12}}>Привет{user.name ? `, ${user.name}` : ''}!</span>
         </div>
@@ -99,7 +101,7 @@ export default function Page2({ setDirection }) {
       {showDashboard && (
         <div className="profile-dashboard" ref={dashboardRef}>
           <div className="profile-dashboard-avatar">
-            <img src={avatar} alt="avatar" style={{width: 54, height: 54, borderRadius: '50%', margin: '0 auto 8px auto', display: 'block'}} />
+            <img src={avatarSrc} alt="avatar" style={{width: 54, height: 54, borderRadius: '50%', margin: '0 auto 8px auto', display: 'block'}} />
           </div>
           <div className="profile-dashboard-menu">
             <div className="profile-dashboard-item profile-dashboard-profile">Профиль</div>

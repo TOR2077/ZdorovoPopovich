@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import avatar from '../assets/avatar.png';
+import avatarDefault from '../assets/avatar.png';
 import BottomNav from '../components/BottomNav';
 import './Profile.css';
 
@@ -9,6 +9,7 @@ const genders = ['Мужской', 'Женский'];
 function Profile() {
   const [isEditing, setIsEditing] = useState(false);
   const [editData, setEditData] = useState({});
+  const [avatarPreview, setAvatarPreview] = useState(null);
   const navigate = useNavigate();
   
   let user = {};
@@ -18,18 +19,32 @@ function Profile() {
 
   const handleEdit = () => {
     setEditData(user);
+    setAvatarPreview(user.avatar || null);
     setIsEditing(true);
   };
 
   const handleSave = () => {
     if (!editData.name || !editData.gender || !editData.height || !editData.weight) return;
-    sessionStorage.setItem('userProfile', JSON.stringify(editData));
+    const userToSave = { ...editData, avatar: avatarPreview };
+    sessionStorage.setItem('userProfile', JSON.stringify(userToSave));
     setIsEditing(false);
   };
 
   const handleCancel = () => {
     setIsEditing(false);
     setEditData({});
+    setAvatarPreview(null);
+  };
+
+  const handleAvatarChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        setAvatarPreview(ev.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -41,7 +56,15 @@ function Profile() {
         ))}
       </div>
       <div className="profile-avatar-block">
-        <img src={avatar} alt="avatar" className="profile-avatar" />
+        <img src={isEditing ? (avatarPreview || avatarDefault) : (user.avatar || avatarDefault)} alt="avatar" className="profile-avatar" />
+        {isEditing && (
+          <input
+            type="file"
+            accept="image/*"
+            style={{ marginTop: 12 }}
+            onChange={handleAvatarChange}
+          />
+        )}
       </div>
       
       {!isEditing ? (

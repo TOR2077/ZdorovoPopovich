@@ -12,6 +12,7 @@ import avatar from '../assets/avatar.png';
 import homeIcon from '../assets/Home icon.png';
 import page2Icon from '../assets/Page 2 icon.png';
 import mainLogo from '../assets/Main logo.png';
+import avatarDefault from '../assets/avatar.png';
 
 const weekDayNames = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
 
@@ -63,6 +64,7 @@ function Home({ setDirection }) {
   try {
     user = JSON.parse(sessionStorage.getItem('userProfile')) || {};
   } catch {}
+  const avatarSrc = user.avatar || avatarDefault;
 
   // Закрытие дропдауна по клику 
   useEffect(() => {
@@ -103,7 +105,7 @@ function Home({ setDirection }) {
       <header className="home-header">
         <div className="header-left">
           <button className="header-icon avatar-btn" onClick={() => setShowDashboard(v => !v)} title="Профиль">
-            <img src={avatar} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
+            <img src={avatarSrc} alt="avatar" style={{width: 28, height: 28, borderRadius: '50%'}} />
           </button>
           <span className="greeting" style={{marginLeft: 12}}>Привет{user.name ? `, ${user.name}` : ''}!</span>
         </div>
@@ -117,7 +119,7 @@ function Home({ setDirection }) {
       {showDashboard && (
         <div className="profile-dashboard" ref={dashboardRef}>
           <div className="profile-dashboard-avatar">
-            <img src={avatar} alt="avatar" style={{width: 54, height: 54, borderRadius: '50%', margin: '0 auto 8px auto', display: 'block'}} />
+            <img src={avatarSrc} alt="avatar" style={{width: 54, height: 54, borderRadius: '50%', margin: '0 auto 8px auto', display: 'block'}} />
           </div>
           <div className="profile-dashboard-menu">
             <div className="profile-dashboard-item profile-dashboard-profile" onClick={() => { setShowDashboard(false); navigate('/profile'); }}>Профиль</div>
