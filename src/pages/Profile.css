@@ -8,6 +8,7 @@
   padding: 32px 16px;
   position: relative;
   box-sizing: border-box;
+  padding-bottom: 90px;
 }
 
 .profile-avatar-block {
@@ -100,7 +101,6 @@
   z-index: 2;
   padding: 24px;
   box-sizing: border-box;
-  margin-bottom: 80px; /* Для нижнего меню */
 }
 
 .profile-edit-field {
