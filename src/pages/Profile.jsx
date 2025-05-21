@@ -72,7 +72,6 @@ function Profile() {
               value={editData.gender || ''}
               onChange={e => setEditData({...editData, gender: e.target.value})}
             >
-              <option value="">пол</option>
               {genders.map(g => (
                 <option key={g} value={g}>{g}</option>
               ))}
