@@ -27,7 +27,7 @@ function getStartOfWeek(date) {
 }
 
 function getWeekDates(startDate) {
-  // Получить массив дат недели, начиная с startDate (понедельник)
+  // Получить массив дат недели, начиная с startDate (понедельник
   const week = [];
   for (let i = 0; i < 7; i++) {
     const d = new Date(startDate);
