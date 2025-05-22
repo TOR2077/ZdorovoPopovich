@@ -1,33 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import BottomNav from '../components/BottomNav';
+import { translations } from '../translations';
 import './Settings.css';
 
-const THEMES = [
-  { key: 'light', label: 'Светлая' },
-  { key: 'dark', label: 'Тёмная' },
+const LANGUAGES = [
+  { key: 'ru', label: 'Русский' },
+  { key: 'en', label: 'English' },
 ];
 
 export default function Settings() {
-  const [theme, setTheme] = useState(() => sessionStorage.getItem('theme') || 'light');
+  const [language, setLanguage] = useState(() => sessionStorage.getItem('language') || 'ru');
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-    sessionStorage.setItem('theme', theme);
-  }, [theme]);
+    sessionStorage.setItem('language', language);
+    // Здесь можно добавить логику для смены языка во всем приложении
+  }, [language]);
+
+  const t = translations[language];
 
   return (
     <div className="settings-container">
-      <h1>Настройки</h1>
+      <h1>{t.settings}</h1>
       <div style={{margin: '24px 0'}}>
-        <div style={{fontWeight: 600, marginBottom: 12}}>Тема приложения:</div>
+        <div style={{fontWeight: 600, marginBottom: 12}}>{t.language}</div>
         <div style={{display: 'flex', gap: 18}}>
-          {THEMES.map(t => (
+          {LANGUAGES.map(lang => (
             <button
-              key={t.key}
-              onClick={() => setTheme(t.key)}
-              className={`theme-btn ${theme === t.key ? 'selected' : ''}`}
+              key={lang.key}
+              onClick={() => setLanguage(lang.key)}
+              className={`language-btn ${language === lang.key ? 'selected' : ''}`}
             >
-              {t.label}
+              {lang.label}
             </button>
           ))}
         </div>
