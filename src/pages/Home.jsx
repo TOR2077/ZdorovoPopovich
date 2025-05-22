@@ -124,7 +124,7 @@ function Home({ setDirection }) {
           <div className="profile-dashboard-menu">
             <div className="profile-dashboard-item profile-dashboard-profile" onClick={() => { setShowDashboard(false); navigate('/profile'); }}>Профиль</div>
             <div className="profile-dashboard-divider"></div>
-            <div className="profile-dashboard-item">Настройки</div>
+            <div className="profile-dashboard-item" onClick={() => { setShowDashboard(false); navigate('/settings'); }}>Настройки</div>
             <div className="profile-dashboard-item">Конфиденциальность</div>
             <div className="profile-dashboard-divider"></div>
             <div className="profile-dashboard-item logout-item" onClick={() => window.Telegram.WebApp.close()}>Выход</div>
