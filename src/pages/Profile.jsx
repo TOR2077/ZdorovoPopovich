@@ -63,11 +63,7 @@ function Profile() {
               accept="image/*"
               onChange={handleAvatarChange}
             />
-            {user.avatar ? (
-              <img src={user.avatar} alt="avatar" />
-            ) : (
-              <div className="profile-avatar-placeholder"></div>
-            )}
+            <img src={avatarPreview || avatarDefault} alt="avatar" />
           </div>
         ) : (
           <div className="profile-avatar">

@@ -304,9 +304,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 32px;
-  color: #6a5acd;
+  color: #b6ff2b;
   z-index: 1;
   pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
 .profile-avatar-upload img {
