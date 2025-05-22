@@ -1,12 +1,29 @@
 import React, { useState } from 'react';
 
-const DEFAULT_NORM = 2000;
 const MEALS = [
   { key: 'breakfast', label: 'Завтрак' },
   { key: 'lunch', label: 'Обед' },
   { key: 'dinner', label: 'Ужин' },
   { key: 'snack', label: 'Перекус' },
 ];
+
+function getCaloriesNorm() {
+  let user = {};
+  try {
+    user = JSON.parse(sessionStorage.getItem('userProfile')) || {};
+  } catch {}
+  const { gender, height, weight } = user;
+  // Формула Миффлина-Сан Жеора, возраст по умолчанию 30
+  const age = 30;
+  if (gender && height && weight) {
+    if (gender === 'Мужской') {
+      return Math.round(10 * Number(weight) + 6.25 * Number(height) - 5 * age + 5);
+    } else {
+      return Math.round(10 * Number(weight) + 6.25 * Number(height) - 5 * age - 161);
+    }
+  }
+  return 2000;
+}
 
 export default function CaloriesCalculator() {
   const [calories, setCalories] = useState({
@@ -15,12 +32,19 @@ export default function CaloriesCalculator() {
     dinner: '',
     snack: '',
   });
+  const norm = getCaloriesNorm();
   const total =
     (parseInt(calories.breakfast) || 0) +
     (parseInt(calories.lunch) || 0) +
     (parseInt(calories.dinner) || 0) +
     (parseInt(calories.snack) || 0);
-  const percent = Math.min(100, Math.round((total / DEFAULT_NORM) * 100));
+  const percent = Math.round((total / norm) * 100);
+
+  let user = {};
+  try {
+    user = JSON.parse(sessionStorage.getItem('userProfile')) || {};
+  } catch {}
+  const noUserData = !(user.gender && user.height && user.weight);
 
   return (
     <div style={{
@@ -34,6 +58,11 @@ export default function CaloriesCalculator() {
       <div style={{width: '100%'}}>
         <div style={{margin: '0 0 0 0', padding: '0 6px'}}>
           <div style={{fontSize: '1.05rem', color: '#23243a', marginBottom: 8, textAlign: 'center'}}>Расчёт калорий</div>
+          {noUserData && (
+            <div style={{color: '#f44336', fontSize: '0.97rem', textAlign: 'center', marginBottom: 8}}>
+              Заполните профиль (пол, рост, вес) для точного расчёта нормы! Сейчас используется 2000 ккал.
+            </div>
+          )}
           {MEALS.map(meal => (
             <div key={meal.key} style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '1.05rem', color: '#444', marginBottom: 8}}>
               <span style={{width: '33%', textAlign: 'left'}}>{meal.label}</span>
@@ -54,10 +83,13 @@ export default function CaloriesCalculator() {
                   background: '#fff',
                   outline: 'none',
                   boxShadow: '0 1px 4px #c6e84e22',
+                  MozAppearance: 'textfield',
                 }}
+                inputMode="numeric"
+                pattern="[0-9]*"
               />
               <span style={{width: '33%', textAlign: 'right', color: '#c6e84e', fontWeight: 600}}>
-                {calories[meal.key] ? Math.round((parseInt(calories[meal.key]) / DEFAULT_NORM) * 100) : 0}%
+                {calories[meal.key] ? Math.round((parseInt(calories[meal.key]) / norm) * 100) : 0}%
               </span>
             </div>
           ))}
@@ -65,10 +97,20 @@ export default function CaloriesCalculator() {
             Итого: <span style={{color: '#6a5acd'}}>{total}</span> ккал
           </div>
           <div style={{marginTop: 4, textAlign: 'center', fontSize: '1rem', color: percent > 100 ? '#f44336' : '#c6e84e'}}>
-            {percent}% от дневной нормы
+            {percent}% от дневной нормы ({norm} ккал)
           </div>
         </div>
       </div>
+      <style>{`
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+      `}</style>
     </div>
   );
 } 
