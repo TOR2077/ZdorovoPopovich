@@ -1,18 +1,76 @@
+:root {
+  /* Светлая тема (по умолчанию) */
+  --bg-color: #ffffff;
+  --text-color: #23243a;
+  --accent-color: #6a5acd;
+  --border-color: #e0e0e0;
+  --button-bg: #fafafa;
+  --button-selected-bg: #f7f3ff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #23243a;
+  --text-color: #ffffff;
+  --accent-color: #b6ff2b;
+  --border-color: #444;
+  --button-bg: #2a2b45;
+  --button-selected-bg: #3a3b55;
+}
+
 .settings-container {
   max-width: 480px;
   margin: 0 auto;
   padding: 32px 16px 90px 16px;
-  background: #fff;
+  background: var(--bg-color);
   border-radius: 18px;
-  box-shadow: 0 2px 12px #a49ad622;
+  box-shadow: 0 2px 12px rgba(164,154,214,0.22);
   font-size: 1.1rem;
-  color: #23243a;
+  color: var(--text-color);
   min-height: 100vh;
   box-sizing: border-box;
   position: relative;
+  font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+  transition: background-color 0.3s, color 0.3s;
 }
+
 .settings-container h1 {
-  color: #6a5acd;
+  color: var(--accent-color);
   margin-bottom: 18px;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.theme-btn {
+  padding: 12px 24px;
+  border-radius: 16px;
+  border: 2px solid var(--border-color);
+  background: var(--button-bg);
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.18s;
+  outline: none;
+}
+
+.theme-btn.selected {
+  border: 2px solid var(--accent-color);
+  background: var(--button-selected-bg);
+  color: var(--accent-color);
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.2);
+}
+
+@media (max-width: 500px) {
+  .settings-container {
+    padding: 18px 4vw 80px 4vw;
+    font-size: 1rem;
+  }
+  .settings-container h1 {
+    font-size: 1.1rem;
+  }
+  .theme-btn {
+    padding: 10px 12px;
+    font-size: 1rem;
+  }
 } 
