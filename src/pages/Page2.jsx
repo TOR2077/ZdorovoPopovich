@@ -104,7 +104,7 @@ export default function Page2({ setDirection }) {
             <img src={avatarSrc} alt="avatar" style={{width: 54, height: 54, borderRadius: '50%', margin: '0 auto 8px auto', display: 'block'}} />
           </div>
           <div className="profile-dashboard-menu">
-            <div className="profile-dashboard-item profile-dashboard-profile">Профиль</div>
+            <div className="profile-dashboard-item profile-dashboard-profile" onClick={() => { setShowDashboard(false); navigate('/profile'); }}>Профиль</div>
             <div className="profile-dashboard-divider"></div>
             <div className="profile-dashboard-item logout-item" onClick={() => window.Telegram.WebApp.close()}>Выход</div>
           </div>
