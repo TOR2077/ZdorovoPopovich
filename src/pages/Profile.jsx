@@ -25,9 +25,10 @@ function Profile() {
 
   const handleSave = () => {
     if (!editData.name || !editData.gender || !editData.height || !editData.weight) return;
-    const userToSave = { ...editData, avatar: avatarPreview };
+    const userToSave = { ...editData, avatar: avatarPreview || user.avatar || null };
     sessionStorage.setItem('userProfile', JSON.stringify(userToSave));
     setIsEditing(false);
+    setAvatarPreview(null);
   };
 
   const handleCancel = () => {
@@ -63,7 +64,7 @@ function Profile() {
               accept="image/*"
               onChange={handleAvatarChange}
             />
-            <img src={avatarPreview || avatarDefault} alt="avatar" />
+            <img src={avatarPreview || user.avatar || avatarDefault} alt="avatar" />
           </div>
         ) : (
           <div className="profile-avatar">
