@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Page2 from './pages/Page2';
 import Registration from './pages/Registration';
 import Profile from './pages/Profile';
-import Settings from './pages/Settings';
+// import Settings from './pages/Settings';
 
 // localStorage.clear(); // Отключаю очистку localStorage
 
@@ -34,7 +34,7 @@ function App() {
         <Route path="/page2" element={<Page2 />} />
         <Route path="/registration" element={<Registration />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/settings" element={<Settings />} />
+        {/* <Route path="/settings" element={<Settings />} /> */}
       </Routes>
     </Router>
   );
