@@ -56,14 +56,23 @@ function Profile() {
         ))}
       </div>
       <div className="profile-avatar-block">
-        <img src={isEditing ? (avatarPreview || avatarDefault) : (user.avatar || avatarDefault)} alt="avatar" className="profile-avatar" />
-        {isEditing && (
-          <input
-            type="file"
-            accept="image/*"
-            style={{ marginTop: 12 }}
-            onChange={handleAvatarChange}
-          />
+        {isEditing ? (
+          <div className="profile-avatar-upload">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarChange}
+            />
+            {user.avatar ? (
+              <img src={user.avatar} alt="avatar" />
+            ) : (
+              <div className="profile-avatar-placeholder"></div>
+            )}
+          </div>
+        ) : (
+          <div className="profile-avatar">
+            <img src={user.avatar || avatarDefault} alt="avatar" />
+          </div>
         )}
       </div>
       

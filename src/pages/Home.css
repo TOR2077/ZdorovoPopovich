@@ -222,6 +222,10 @@ html, body, #root {
 .avatar-btn img {
   width: 28px;
   height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  max-width: 28px;
+  max-height: 28px;
   border-radius: 50%;
   border: 2px solid #b0b0b0;
   background: #fff;
@@ -276,6 +280,19 @@ html, body, #root {
   justify-content: center;
   align-items: center;
   margin-bottom: 6px;
+}
+
+.profile-dashboard-avatar img {
+  width: 54px;
+  height: 54px;
+  min-width: 54px;
+  min-height: 54px;
+  max-width: 54px;
+  max-height: 54px;
+  border-radius: 50%;
+  border: 2px solid #b0b0b0;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
 }
 
 .profile-dashboard-menu {
@@ -384,6 +401,22 @@ html, body, #root {
   .main-image-block img {
     max-height: 300px !important;
   }
+  .avatar-btn img {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    max-width: 28px;
+    max-height: 28px;
+  }
+  .profile-dashboard-avatar img {
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    min-height: 54px;
+    max-width: 54px;
+    max-height: 54px;
+  }
 }
 
 @media (max-width: 350px) {
@@ -457,4 +490,5 @@ html, body, #root {
 .header-icon.avatar-btn img,
 .profile-dashboard-avatar img {
   object-fit: cover;
+  aspect-ratio: 1 / 1;
 } 
