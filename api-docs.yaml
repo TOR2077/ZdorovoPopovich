@@ -1,0 +1,205 @@
+openapi: 3.0.0
+info:
+  title: Health Tracking API
+  description: API для отслеживания здоровья (шаги, настроение, вода)
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3001
+    description: Локальный сервер разработки
+  - url: https://api.example.com
+    description: Продакшен сервер
+
+paths:
+  /api/steps:
+    get:
+      summary: Получить количество шагов за день
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2024-06-05"
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  steps:
+                    type: integer
+                    example: 1234
+        '404':
+          description: Данные не найдены
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Данные не найдены"
+    post:
+      summary: Сохранить количество шагов
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date
+                  example: "2024-06-05"
+                steps:
+                  type: integer
+                  example: 1234
+              required:
+                - date
+                - steps
+      responses:
+        '200':
+          description: Успешное сохранение
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '400':
+          description: Неверные данные
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Неверный формат данных"
+
+  /api/mood:
+    get:
+      summary: Получить настроение за день
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2024-06-05"
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  mood:
+                    type: integer
+                    enum: [0, 1, 2]
+                    description: 0 - хорошее, 1 - нейтральное, 2 - плохое
+                    example: 1
+        '404':
+          description: Данные не найдены
+    post:
+      summary: Сохранить настроение
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date
+                  example: "2024-06-05"
+                mood:
+                  type: integer
+                  enum: [0, 1, 2]
+                  description: 0 - хорошее, 1 - нейтральное, 2 - плохое
+                  example: 1
+              required:
+                - date
+                - mood
+      responses:
+        '200':
+          description: Успешное сохранение
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '400':
+          description: Неверные данные
+
+  /api/water:
+    get:
+      summary: Получить количество воды за день
+      parameters:
+        - name: date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+            example: "2024-06-05"
+      responses:
+        '200':
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  water:
+                    type: integer
+                    description: Количество стаканов воды
+                    example: 5
+        '404':
+          description: Данные не найдены
+    post:
+      summary: Сохранить количество воды
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date
+                  example: "2024-06-05"
+                water:
+                  type: integer
+                  description: Количество стаканов воды
+                  example: 5
+              required:
+                - date
+                - water
+      responses:
+        '200':
+          description: Успешное сохранение
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+        '400':
+          description: Неверные данные 

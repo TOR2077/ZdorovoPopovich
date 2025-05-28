@@ -1,0 +1,328 @@
+.profile-page-container {
+  width: 100vw;
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px;
+  position: relative;
+  box-sizing: border-box;
+  padding-bottom: 90px;
+}
+
+.profile-avatar-block {
+  margin-bottom: 16px;
+  z-index: 2;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 2px solid #aaa;
+  background: #eee;
+  display: block;
+  margin: 0 auto;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-stars-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 220px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.star {
+  color: #b6ff2b;
+  font-size: 2rem;
+  position: absolute;
+}
+/* Примерные позиции звёзд, можно скорректировать */
+.star-0 { left: 15%; top: 30px; }
+.star-1 { left: 25%; top: 60px; }
+.star-2 { left: 40%; top: 20px; }
+.star-3 { left: 60%; top: 40px; }
+.star-4 { left: 75%; top: 30px; }
+.star-5 { left: 85%; top: 70px; }
+.star-6 { left: 10%; top: 100px; }
+.star-7 { left: 30%; top: 120px; }
+.star-8 { left: 50%; top: 90px; }
+.star-9 { left: 70%; top: 110px; }
+.star-10 { left: 80%; top: 150px; }
+.star-11 { left: 20%; top: 170px; }
+
+.profile-info-block {
+  width: 80%;
+  max-width: 400px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 2;
+}
+
+.profile-info-item {
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 14px 0;
+  text-align: center;
+  box-shadow: 0 2px 8px #0001;
+}
+
+/* Стили для редактирования */
+.profile-edit-btn {
+  margin-top: 24px;
+  margin-bottom: 32px;
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+  border: none;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 12px 32px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #0001;
+  z-index: 2;
+}
+
+.profile-edit-form {
+  width: 80%;
+  max-width: 400px;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 2;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.profile-edit-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.profile-edit-field input,
+.profile-edit-field select {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+  border: none;
+  border-radius: 40px;
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 2px 8px #0001;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.profile-edit-field select {
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+  border: none;
+  border-radius: 40px;
+  outline: none;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 2px 8px #0001;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 14px 48px 14px 0;
+  position: relative;
+  background-image:
+    linear-gradient(90deg, #23243a 0%, #6b6e9c 100%),
+    url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23b6ff2b' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, right 18px center;
+  background-size: 100% 100%, 24px 24px;
+}
+
+.profile-edit-field select:focus {
+  outline: none;
+}
+
+.profile-edit-field input::placeholder {
+  color: #b6ff2b;
+  opacity: 0.7;
+}
+
+.profile-edit-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  padding: 0 12px;
+}
+
+.profile-save-btn,
+.profile-cancel-btn {
+  flex: 1;
+  padding: 12px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.profile-save-btn {
+  background: linear-gradient(90deg, #23243a 0%, #6b6e9c 100%);
+  color: #b6ff2b;
+}
+
+.profile-cancel-btn {
+  background: #e0e0e0;
+  color: #23243a;
+}
+
+/* Стили для нижнего меню */
+.profile-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  padding: 10px 0 18px 0;
+  box-shadow: 0 -2px 12px rgba(164,154,214,0.08);
+  z-index: 10;
+}
+
+.footer-icon {
+  width: 48px;
+  height: 48px;
+  background: #f7f3ff;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(164,154,214,0.08);
+}
+
+.footer-icon:active {
+  background: #e5dbe7;
+}
+
+.footer-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .profile-edit-form {
+    width: 95%;
+    padding: 16px;
+    margin-top: 24px;
+  }
+  
+  .profile-edit-field input,
+  .profile-edit-field select {
+    font-size: 1.5rem;
+    padding: 14px 0;
+  }
+  
+  .profile-save-btn,
+  .profile-cancel-btn {
+    font-size: 1rem;
+    padding: 10px;
+  }
+  
+  .footer-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .footer-icon img {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .profile-footer {
+    padding: 6px 0 12px 0;
+  }
+}
+
+.profile-edit-field input[type="number"]::-webkit-outer-spin-button,
+.profile-edit-field input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.profile-edit-field input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.profile-avatar-upload {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 24px;
+  cursor: pointer;
+}
+
+.profile-avatar-upload input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.profile-avatar-upload::after {
+  content: '+';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 32px;
+  color: #b6ff2b;
+  z-index: 1;
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.profile-avatar-upload img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #6a5acd;
+  box-shadow: 0 2px 8px rgba(106, 90, 205, 0.2);
+} 

@@ -1,0 +1,35 @@
+:root {
+  /* Светлая тема (по умолчанию) */
+  --bg-color: #ffffff;
+  --text-color: #23243a;
+  --accent-color: #6a5acd;
+  --border-color: #e0e0e0;
+  --button-bg: #fafafa;
+  --button-selected-bg: #f7f3ff;
+}
+
+[data-theme="dark"] {
+  --bg-color: #23243a;
+  --text-color: #ffffff;
+  --accent-color: #b6ff2b;
+  --border-color: #444;
+  --button-bg: #2a2b45;
+  --button-selected-bg: #3a3b55;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} 
